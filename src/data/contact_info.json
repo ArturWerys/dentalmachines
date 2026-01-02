@@ -1,0 +1,10 @@
+{
+  "brand": "Dental Machines",
+  "phone": "+48 000 000 000",
+  "email": "mail@mail.com",
+  "address": "Adres",
+  "social": {
+    "instagram": "https://www.instagram.com/dentalmachines_official/",
+    "youtube": "https://www.youtube.com/@DentalMachinesOfficial"
+  }
+}
