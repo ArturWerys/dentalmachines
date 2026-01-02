@@ -21,6 +21,16 @@ import Footer from "@/components/Footer";
 export default function HomeClient() {
   const { home } = content;
 
+  const fieldSx = {
+    "& .MuiInputBase-root": {
+      backgroundColor: colors.surface,
+      borderRadius: 3,
+    },
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: colors.border,
+    },
+  };
+
   return (
     <Box
       sx={{
@@ -35,20 +45,21 @@ export default function HomeClient() {
         {/* HERO */}
         <Box
           sx={{
-            mt: 6,
+            mt: { xs: 4, md: 6 },
             display: "grid",
-            gap: 4,
+            gap: { xs: 4, md: 5 },
             gridTemplateColumns: { xs: "1fr", md: "1.2fr 0.8fr" },
             alignItems: "start",
           }}
         >
+          {/* Left */}
           <Box>
             <Typography
               sx={{
                 fontSize: 14,
                 fontWeight: 900,
                 letterSpacing: "0.14em",
-                color: "rgba(15,23,42,0.55)",
+                color: colors.textMute,
               }}
             >
               EYE OPTIC
@@ -62,10 +73,10 @@ export default function HomeClient() {
                 lineHeight: 0.95,
                 fontSize: { xs: 44, sm: 56, md: 86 },
                 maxWidth: { md: "16ch" },
-                color: "#0F172A",
+                color: colors.text,
               }}
             >
-              Lupy stomatologiczne dla ergonomii i precyzji
+              Lupy stomatologiczne dla ergonomii <br /> i precyzji
             </Typography>
 
             <Typography
@@ -73,83 +84,62 @@ export default function HomeClient() {
                 mt: 2.5,
                 fontSize: 18,
                 lineHeight: 1.65,
-                color: "rgba(15,23,42,0.72)",
+                color: colors.textSoft,
                 maxWidth: "62ch",
               }}
             >
               Dobierzemy powiększenie, odległość roboczą i konfigurację tak,
-              żeby praca była wygodniejsza i dokładniejsza...
+              żeby praca była wygodniejsza i dokładniejsza. Liczy się ergonomia,
+              jasny obraz i dopasowanie do realnej pracy w gabinecie.
             </Typography>
 
+            {/* CTA (TYLKO JEDEN BLOK – bez duplikatu) */}
             <Box sx={{ mt: 3, display: "flex", gap: 1.5, flexWrap: "wrap" }}>
               <Button
-                variant="contained"
-                sx={{ borderRadius: 3, fontWeight: 900, px: 3, py: 1.2 }}
-              >
-                Umów dobór
-              </Button>
-              <Button
-                variant="outlined"
-                sx={{ borderRadius: 3, fontWeight: 900, px: 3, py: 1.2 }}
-              >
-                Zobacz produkty
-              </Button>
-            </Box>
-
-            <Box sx={{ mt: 3, display: "flex", flexWrap: "wrap", gap: 1.2 }}>
-              <Button
                 component={NextLink}
-                href={home.hero.ctaPrimary.href}
+                href="/fitting"
                 variant="contained"
                 disableElevation
                 sx={{
                   borderRadius: 3,
-                  backgroundColor: colors.white,
-                  color: colors.darkText,
                   fontWeight: 900,
                   px: 3,
-                  py: 1.35,
+                  py: 1.2,
                   textTransform: "none",
-                  "&:hover": { backgroundColor: "rgba(255,255,255,0.92)" },
                 }}
               >
-                {home.hero.ctaPrimary.label}
+                Umów dobór
               </Button>
 
               <Button
                 component={NextLink}
-                href={home.hero.ctaSecondary.href}
+                href="/products"
                 variant="outlined"
                 sx={{
                   borderRadius: 3,
-                  borderColor: "rgba(255,255,255,0.45)",
-                  color: colors.white,
-                  fontWeight: 800,
+                  fontWeight: 900,
                   px: 3,
-                  py: 1.35,
+                  py: 1.2,
                   textTransform: "none",
-                  "&:hover": {
-                    borderColor: "rgba(255,255,255,0.75)",
-                    backgroundColor: "rgba(255,255,255,0.06)",
-                  },
+                  borderColor: "rgba(15,23,42,0.18)",
+                  "&:hover": { borderColor: "rgba(15,23,42,0.28)" },
                 }}
               >
-                {home.hero.ctaSecondary.label}
+                Zobacz produkty
               </Button>
             </Box>
-
           </Box>
 
-          {/* Right column (w stylu screena) */}
+          {/* Right */}
           <Box sx={{ display: "grid", gap: 2 }}>
             <Box
               sx={{
                 borderRadius: 4,
-                p: 3.2,
-                backgroundColor: "#fff",
-                border: "1px solid rgba(15,23,42,0.10)",
-                boxShadow: "0 18px 50px rgba(15,23,42,0.08)",
-                color: "#0F172A",
+                p: { xs: 2.6, md: 3.2 },
+                backgroundColor: colors.surface,
+                border: `1px solid ${colors.border}`,
+                boxShadow: colors.shadow,
+                color: colors.text,
                 maxWidth: 520,
               }}
             >
@@ -160,12 +150,12 @@ export default function HomeClient() {
               <Typography
                 sx={{
                   mt: 0.8,
-                  color: "rgba(15,23,42,0.60)",
+                  color: colors.textSoft,
                   fontSize: 14,
                   lineHeight: 1.6,
                 }}
               >
-                Szybko dopasujemy konfigurację pod Twoją specjalizację i
+                Dopasujemy konfigurację pod Twoją specjalizację <br /> i
                 ergonomię.
               </Typography>
 
@@ -190,50 +180,59 @@ export default function HomeClient() {
           </Box>
         </Box>
 
+        {/* TRUST (bliżej CTA, 3 obok siebie na desktopie) */}
         <Box
+          sx={{
+            mt: { xs: 3, md: 3.5 },
+            display: "grid",
+            gap: 2.5,
+            gridTemplateColumns: { xs: "1fr", md: "repeat(3, 1fr)" },
+            color: "rgba(15,23,42,0.70)",
+          }}
+        >
+          {[
+            "Dobór pod specjalizację",
+            "Korekcja wzroku w konfiguracji",
+            "TTL / Flip-Up / LED — do wyboru",
+          ].map((t) => (
+            <Box
+              key={t}
               sx={{
-                mt: 6,
                 display: "flex",
-                gap: 4,
-                flexWrap: "wrap",
-                color: "rgba(15,23,42,0.70)",
+                alignItems: "center",
+                gap: 1.2,
+                fontWeight: 700,
+                whiteSpace: "nowrap",
               }}
             >
-              {[
-                "Dobór pod specjalizację",
-                "Korekcja wzroku w konfiguracji",
-                "TTL / Flip-Up / LED — do wyboru",
-              ].map((t) => (
-                <Box
-                  key={t}
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 1.2,
-                    fontWeight: 700,
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: 8,
-                      height: 8,
-                      borderRadius: 999,
-                      backgroundColor: "#0EA5A4",
-                    }}
-                  />
-                  <span>{t}</span>
-                </Box>
-              ))}
+              <Box
+                sx={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: 999,
+                  backgroundColor: colors.accent,
+                  flex: "0 0 auto",
+                }}
+              />
+              <Typography component="span" sx={{ fontWeight: 700 }}>
+                {t}
+              </Typography>
             </Box>
+          ))}
+        </Box>
 
         {/* IMAGE + 3 cards overlay */}
-        <Box sx={{ mt: 4 }}>
+        <Box sx={{ mt: { xs: 5, md: 7 } }}>
+          <Divider
+            sx={{ mb: { xs: 3, md: 4 }, borderColor: "rgba(15,23,42,0.08)" }}
+          />
           <Box
             sx={{
               borderRadius: 4,
               p: 2,
-              backgroundColor: colors.pillBg,
-              backdropFilter: "blur(10px)",
+              backgroundColor: colors.surface,
+              border: `1px solid ${colors.border}`,
+              boxShadow: colors.shadowSm,
             }}
           >
             <Box
@@ -352,7 +351,9 @@ export default function HomeClient() {
               mt: 2,
               borderRadius: 3,
               overflow: "hidden",
-              border: "1px solid rgba(255,255,255,0.18)",
+              border: `1px solid ${colors.border}`,
+              boxShadow: colors.shadowSm,
+              backgroundColor: colors.surface,
             }}
           >
             {home.compare.rows.map((r, idx) => (
@@ -364,16 +365,13 @@ export default function HomeClient() {
                   gap: 2,
                   px: 2.5,
                   py: 2,
-                  backgroundColor:
-                    idx % 2
-                      ? "rgba(255,255,255,0.08)"
-                      : "rgba(255,255,255,0.10)",
+                  backgroundColor: idx % 2 ? colors.surfaceAlt : colors.surface,
                 }}
               >
                 <Typography sx={{ color: colors.textSoft, fontWeight: 700 }}>
                   {r.left}
                 </Typography>
-                <Typography sx={{ color: colors.white, fontWeight: 900 }}>
+                <Typography sx={{ color: colors.text, fontWeight: 900 }}>
                   {r.right}
                 </Typography>
               </Box>
@@ -389,16 +387,15 @@ export default function HomeClient() {
           <Button
             component={NextLink}
             href="/fitting"
+            variant="contained"
+            disableElevation
             sx={{
               mt: 2.5,
               borderRadius: 3,
-              backgroundColor: colors.white,
-              color: colors.darkText,
               fontWeight: 900,
-              textTransform: "none",
               px: 3,
-              py: 1.35,
-              "&:hover": { backgroundColor: "rgba(255,255,255,0.92)" },
+              py: 1.2,
+              textTransform: "none",
             }}
           >
             Umów dobór
@@ -440,11 +437,12 @@ export default function HomeClient() {
                 sx={{
                   borderRadius: 3,
                   p: 2.5,
-                  backgroundColor: colors.pillBg,
-                  backdropFilter: "blur(10px)",
+                  backgroundColor: colors.surface,
+                  border: `1px solid ${colors.border}`,
+                  boxShadow: colors.shadowSm,
                 }}
               >
-                <Typography sx={{ fontWeight: 900, color: colors.white }}>
+                <Typography sx={{ fontWeight: 900, color: colors.text }}>
                   {it.q}
                 </Typography>
                 <Typography
@@ -465,7 +463,7 @@ export default function HomeClient() {
               alignItems: "center",
               gap: 1,
               mt: 2.5,
-              color: colors.white,
+              color: colors.text,
               fontWeight: 900,
             }}
           >
@@ -496,9 +494,9 @@ export default function HomeClient() {
               mt: 3,
               borderRadius: 4,
               p: { xs: 2, md: 3 },
-              backgroundColor: "rgba(255,255,255,0.10)",
-              border: "1px solid rgba(255,255,255,0.18)",
-              backdropFilter: "blur(10px)",
+              backgroundColor: colors.surfaceAlt,
+              border: `1px solid ${colors.border}`,
+              boxShadow: colors.shadowSm,
             }}
           >
             <Box
@@ -508,15 +506,27 @@ export default function HomeClient() {
                 gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" },
               }}
             >
-              <TextField label="Imię i nazwisko" fullWidth required />
-              <TextField label="Telefon" fullWidth required />
-              <TextField label="E-mail" type="email" fullWidth required />
+              <TextField
+                label="Imię i nazwisko"
+                fullWidth
+                required
+                sx={fieldSx}
+              />
+              <TextField label="Telefon" fullWidth required sx={fieldSx} />
+              <TextField
+                label="E-mail"
+                type="email"
+                fullWidth
+                required
+                sx={fieldSx}
+              />
 
               <TextField
                 select
                 label="Specjalizacja"
                 fullWidth
                 defaultValue={home.contact.fields.specializations[0]}
+                sx={fieldSx}
               >
                 {home.contact.fields.specializations.map((s) => (
                   <MenuItem key={s} value={s}>
@@ -530,6 +540,7 @@ export default function HomeClient() {
                 label="Co Cię interesuje"
                 fullWidth
                 defaultValue={home.contact.fields.interests[3]}
+                sx={fieldSx}
               >
                 {home.contact.fields.interests.map((s) => (
                   <MenuItem key={s} value={s}>
@@ -539,7 +550,7 @@ export default function HomeClient() {
               </TextField>
             </Box>
 
-            <Divider sx={{ my: 2.5, borderColor: "rgba(255,255,255,0.18)" }} />
+            <Divider sx={{ my: 2.5, borderColor: colors.border }} />
 
             <Button
               type="submit"
@@ -547,13 +558,10 @@ export default function HomeClient() {
               disableElevation
               sx={{
                 borderRadius: 3,
-                backgroundColor: colors.white,
-                color: colors.darkText,
                 fontWeight: 900,
                 px: 3,
-                py: 1.35,
+                py: 1.2,
                 textTransform: "none",
-                "&:hover": { backgroundColor: "rgba(255,255,255,0.92)" },
               }}
             >
               Wyślij — oddzwonimy / odpiszemy
@@ -578,9 +586,11 @@ function OfferCard({ title, desc }) {
         borderRadius: 3,
         px: 2.2,
         py: 2,
-        backgroundColor: colors.cardBg,
-        border: `1px solid ${colors.cardBorder}`,
-        color: colors.darkText,
+        backgroundColor: "rgba(255,255,255,0.92)",
+        border: "1px solid rgba(15,23,42,0.10)",
+        boxShadow: "0 10px 25px rgba(15,23,42,0.10)",
+        color: "#0F172A",
+        backdropFilter: "blur(8px)",
       }}
     >
       <Box>
@@ -609,11 +619,12 @@ function GlassTile({ text }) {
       sx={{
         borderRadius: 3,
         p: 2.5,
-        backgroundColor: colors.pillBg,
-        backdropFilter: "blur(10px)",
+        backgroundColor: colors.surface,
+        border: `1px solid ${colors.border}`,
+        boxShadow: colors.shadowSm,
       }}
     >
-      <Typography sx={{ color: colors.white, fontWeight: 900 }}>
+      <Typography sx={{ color: colors.text, fontWeight: 900 }}>
         {text}
       </Typography>
     </Box>
@@ -629,13 +640,14 @@ function ProductTile({ title, desc, href, cta }) {
         textDecoration: "none",
         borderRadius: 3,
         p: 2.5,
-        backgroundColor: colors.pillBg,
-        border: "1px solid rgba(255,255,255,0.18)",
-        backdropFilter: "blur(10px)",
-        "&:hover": { backgroundColor: "rgba(255,255,255,0.14)" },
+        backgroundColor: colors.surface,
+        border: `1px solid ${colors.border}`,
+        boxShadow: colors.shadowSm,
+        display: "block",
+        "&:hover": { backgroundColor: colors.surfaceAlt },
       }}
     >
-      <Typography sx={{ color: colors.white, fontWeight: 900, fontSize: 18 }}>
+      <Typography sx={{ color: colors.text, fontWeight: 900, fontSize: 18 }}>
         {title}
       </Typography>
       <Typography
@@ -646,10 +658,11 @@ function ProductTile({ title, desc, href, cta }) {
       <Typography
         sx={{
           mt: 2,
-          color: colors.white,
+          color: colors.accent,
           fontWeight: 900,
           fontSize: 14,
           display: "inline-flex",
+          alignItems: "center",
           gap: 1,
         }}
       >
@@ -674,8 +687,8 @@ function Step({ n, title, desc }) {
           width: 28,
           height: 28,
           borderRadius: 999,
-          backgroundColor: "rgba(14,165,164,0.12)", // teal tint
-          color: "#0EA5A4",
+          backgroundColor: colors.accentSoft,
+          color: colors.accent,
           display: "grid",
           placeItems: "center",
           fontWeight: 900,
@@ -687,13 +700,20 @@ function Step({ n, title, desc }) {
       </Box>
 
       <Box>
-        <Typography sx={{ fontWeight: 900, fontSize: 15, lineHeight: 1.25 }}>
+        <Typography
+          sx={{
+            fontWeight: 900,
+            fontSize: 15,
+            lineHeight: 1.25,
+            color: colors.text,
+          }}
+        >
           {title}
         </Typography>
         <Typography
           sx={{
             mt: 0.4,
-            color: "rgba(15,23,42,0.68)",
+            color: colors.textSoft,
             fontSize: 14,
             lineHeight: 1.6,
           }}
