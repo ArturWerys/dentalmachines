@@ -579,36 +579,38 @@ function OfferCard({ title, desc }) {
   return (
     <Box
       sx={{
-        display: "flex",
-        justifyContent: "space-between",
-        gap: 2,
-        alignItems: "flex-end",
+        position: "relative",
         borderRadius: 3,
         px: 2.2,
         py: 2,
         backgroundColor: "rgba(255,255,255,0.92)",
         border: "1px solid rgba(15,23,42,0.10)",
         boxShadow: "0 10px 25px rgba(15,23,42,0.10)",
-        color: "#0F172A",
         backdropFilter: "blur(8px)",
+        textAlign: "center",
+
+        // --- HOVER / ANIMACJA ---
+        transition:
+          "transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease",
+        "&:hover": {
+          transform: "translateY(-2px)",
+          boxShadow: "0 14px 30px rgba(15,23,42,0.14)",
+          borderColor: "rgba(15,23,42,0.14)",
+        },
       }}
     >
-      <Box>
-        <Typography sx={{ fontSize: 14, fontWeight: 900 }}>{title}</Typography>
-        <Typography
-          sx={{
-            mt: 1,
-            fontSize: 12.5,
-            lineHeight: 1.35,
-            color: "rgba(15,23,42,0.65)",
-          }}
-        >
-          {desc}
-        </Typography>
-      </Box>
-      <NorthEastRoundedIcon
-        sx={{ fontSize: 18, color: "rgba(15,23,42,0.7)" }}
-      />
+      <Typography sx={{ fontSize: 16, fontWeight: 900 }}>{title}</Typography>
+
+      <Typography
+        sx={{
+          mt: 1,
+          fontSize: 14,
+          lineHeight: 1.35,
+          color: "rgba(15,23,42,0.65)",
+        }}
+      >
+        {desc}
+      </Typography>
     </Box>
   );
 }

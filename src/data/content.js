@@ -1,6 +1,6 @@
 const content = {
   nav: [
-    { href: "/products", label: "Produkty" },
+    { href: "/products/ttl", label: "Produkty" },
     { href: "/fitting", label: "Dobór" },
     { href: "/service", label: "Serwis" },
     { href: "/reviews", label: "Opinie" },
