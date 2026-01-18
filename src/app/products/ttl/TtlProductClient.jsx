@@ -343,7 +343,7 @@ export default function TtlProductClient() {
               <Box
                 key={m}
                 sx={{
-                  px: 1.25,
+                  px: 1.5,
                   py: 0.7,
                   borderRadius: 999,
                   border: `1px solid ${colors.border}`,
@@ -352,7 +352,7 @@ export default function TtlProductClient() {
                   fontWeight: 900,
                   fontSize: 13,
                   boxShadow: colors.shadowSm,
-                  minWidth: 56,
+                  minWidth: 110,
                   textAlign: "center",
                 }}
               >
@@ -361,7 +361,7 @@ export default function TtlProductClient() {
             ))}
           </Box>
 
-          <Box sx={{ mt: 2.75 }}>
+          {/* <Box sx={{ mt: 2.75 }}>
             <Button
               component={NextLink}
               href="/fitting"
@@ -379,7 +379,7 @@ export default function TtlProductClient() {
             >
               Dopasuj konfigurację
             </Button>
-          </Box>
+          </Box> */}
         </Box>
 
         {/* RIGHT: Spec card */}
@@ -444,10 +444,10 @@ export default function TtlProductClient() {
             }}
           >
             {[
-              { label: "Odległość robocza", value: "ZAKRES" },
-              { label: "Pole widzenia", value: "ZAKRES" },
+              { label: "Odległość robocza", value: "50 cm" },
+              { label: "Pole widzenia", value: "100°" },
               { label: "Waga zestawu", value: "300 g" },
-              { label: "Korekcja wzroku", value: "Możliwa" },
+              { label: "Korekcja wzroku", value: "+- 3 dioptrie" },
             ].map((row) => (
               <Box
                 key={row.label}
