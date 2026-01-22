@@ -2,12 +2,12 @@ import { Box, Container } from "@mui/material";
 import NavbarPill from "@/components/NavbarPill";
 import Footer from "@/components/Footer";
 import colors from "@/data/colors";
-import TtlProductClient from "./TtlProductClient.jsx";
+import FlipUpProductClient from "./FlipUpProductClient.jsx";
 
 export const metadata = {
-  title: "Lupy TTL EYE OPTIC",
+  title: "Lupy Flip-Up EYE OPTIC",
   description:
-    "Lupy TTL (Through The Lens): stabilność obrazu i ergonomia pracy. Umów dobór konfiguracji TTL w EYE OPTIC.",
+    "Lupy Flip-Up EYE OPTIC – wygodna regulacja i możliwość odchylenia optyki. Idealne jako pierwsze lupy lub do pracy mieszanej.",
 };
 
 export default function Page() {
@@ -22,7 +22,7 @@ export default function Page() {
       <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 } }}>
         <NavbarPill />
 
-        <TtlProductClient />
+        <FlipUpProductClient />
 
         <Footer />
       </Container>

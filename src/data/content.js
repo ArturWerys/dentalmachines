@@ -1,7 +1,7 @@
 const content = {
   nav: [
     { href: "/products/ttl", label: "Produkty" },
-    { href: "/fitting", label: "Dobór" },
+    { href: "/products/flipUp", label: "Dobór" },
     { href: "/service", label: "Serwis" },
     { href: "/reviews", label: "Opinie" },
     { href: "/faq", label: "FAQ" },
