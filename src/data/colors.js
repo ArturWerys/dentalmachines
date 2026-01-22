@@ -6,7 +6,7 @@ const colors = {
 
   // tekst
   text: "#0F172A",
-  textSoft: "rgba(15,23,42,0.72)",
+  textSoft: "rgba(15,23,42,0.9)",
   textMute: "rgba(15,23,42,0.55)",
 
   // obramowania / cienie

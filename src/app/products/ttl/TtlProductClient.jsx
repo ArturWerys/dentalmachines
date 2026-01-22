@@ -10,6 +10,15 @@ import colors from "@/data/colors";
 export default function TtlProductClient() {
   const images = useMemo(() => ["/TTLA3_1.jpg", "/TTLA3_2.jpg"], []);
 
+  const fontSizes = {
+    title: { xs: 32, sm: 40, md: 46 },
+    subtitle: { xs: 26, md: 34 },
+    text: 18,
+    small: 16,
+    mini: 14,
+    heading: 20,
+  };
+
   return (
     <>
       {/* TOP: TTL + image (image wyśrodkowane względem reszty) */}
@@ -68,7 +77,7 @@ export default function TtlProductClient() {
               fontWeight: 900,
               letterSpacing: "-0.03em",
               lineHeight: 1.05,
-              fontSize: { xs: 32, sm: 40, md: 46 },
+              fontSize: fontSizes.title,
               color: colors.text,
             }}
           >
@@ -81,13 +90,18 @@ export default function TtlProductClient() {
               mt: 2.5,
               display: "flex",
               alignItems: "center",
-              gap: 1,
+              gap: 1.2,
               color: colors.textSoft,
               flexWrap: "wrap",
             }}
           >
             <Typography
-              sx={{ fontSize: 13, fontWeight: 800, color: colors.accent }}
+              sx={{
+                fontSize: fontSizes.mini,
+                fontWeight: 800,
+                color: colors.accent,
+                letterSpacing: "0.1em", // <-- zwiększa odstęp między literami, także przy kropkach
+              }}
             >
               Stabilność • Ergonomia • Precyzja
             </Typography>
@@ -145,7 +159,7 @@ export default function TtlProductClient() {
         <Box sx={{ px: { md: 2 } }}>
           <Typography
             sx={{
-              fontSize: { xs: 26, md: 34 },
+              fontSize: fontSizes.subtitle,
               fontWeight: 900,
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
@@ -263,7 +277,7 @@ export default function TtlProductClient() {
           display: "grid",
           gap: { xs: 3, md: 4 },
           gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
-          alignItems: "center",
+          alignItems: "stretch",
         }}
       >
         <Box
@@ -279,7 +293,7 @@ export default function TtlProductClient() {
               display: "inline-flex",
               alignItems: "center",
               gap: 1,
-              fontSize: 12,
+              fontSize: fontSizes.small,
               fontWeight: 900,
               letterSpacing: "0.12em",
               textTransform: "uppercase",
@@ -293,7 +307,7 @@ export default function TtlProductClient() {
           <Typography
             sx={{
               mt: 1,
-              fontSize: { xs: 26, md: 34 },
+              fontSize: fontSizes.subtitle,
               fontWeight: 900,
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
@@ -314,7 +328,7 @@ export default function TtlProductClient() {
             sx={{
               mt: 2.5,
               mb: 1,
-              fontSize: 12,
+              fontSize: fontSizes.small,
               fontWeight: 900,
               letterSpacing: "0.10em",
               textTransform: "uppercase",
@@ -325,11 +339,13 @@ export default function TtlProductClient() {
             Dostępne powiększenia
           </Typography>
 
+          {/* Podpis dla powiększeń */}
+
           <Typography
             sx={{
               mt: -0.25,
               mb: 1.5,
-              fontSize: 14,
+              fontSize: fontSizes.small,
               lineHeight: 1.7,
               color: colors.textSoft,
             }}
@@ -338,48 +354,48 @@ export default function TtlProductClient() {
             podczas konsultacji.
           </Typography>
 
-          <Box sx={{ mt: 0, display: "flex", flexWrap: "wrap", gap: 1 }}>
-            {["2.5×", "3.0×", "3.5×", "4.0×"].map((m) => (
-              <Box
-                key={m}
-                sx={{
-                  px: 1.5,
-                  py: 0.7,
-                  borderRadius: 999,
-                  border: `1px solid ${colors.border}`,
-                  background: `linear-gradient(180deg, ${colors.surfaceAlt} 0%, ${colors.surface} 100%)`,
-                  color: colors.text,
-                  fontWeight: 900,
-                  fontSize: 13,
-                  boxShadow: colors.shadowSm,
-                  minWidth: 110,
-                  textAlign: "center",
-                }}
-              >
-                {m}
-              </Box>
-            ))}
-          </Box>
-
-          {/* <Box sx={{ mt: 2.75 }}>
-            <Button
-              component={NextLink}
-              href="/fitting"
-              variant="contained"
-              disableElevation
+          {/* Kafelki powiększeń */}
+          <Box sx={{ mt: 2 }}>
+            <Box
               sx={{
-                borderRadius: 3,
-                fontWeight: 900,
-                px: 3,
-                py: 1.2,
-                textTransform: "none",
-                backgroundColor: colors.accent,
-                "&:hover": { backgroundColor: colors.accent },
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: 2,
+                justifyItems: "start", // wyrównanie do lewej
               }}
             >
-              Dopasuj konfigurację
-            </Button>
-          </Box> */}
+              {["2.5×", "4.0×", "3.0×", "3.5×"].map((m) => (
+                <Box
+                  key={m}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1.2,
+                  }}
+                >
+                  {/* zielona kropka */}
+                  <Box
+                    sx={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: "50%",
+                      backgroundColor: colors.accent,
+                      flex: "0 0 auto",
+                    }}
+                  />
+                  <Typography
+                    sx={{
+                      fontWeight: 700,
+                      color: colors.text,
+                      fontSize: fontSizes.text,
+                    }}
+                  >
+                    {m}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+          </Box>
         </Box>
 
         {/* RIGHT: Spec card */}
@@ -413,10 +429,10 @@ export default function TtlProductClient() {
               fontWeight: 900,
               letterSpacing: "-0.02em",
               color: colors.text,
-              fontSize: 18,
+              fontSize: fontSizes.heading,
             }}
           >
-            Najważniejsze parametry techniczne:
+            Najważniejsze parametry techniczne
           </Typography>
 
           <Typography
@@ -425,66 +441,83 @@ export default function TtlProductClient() {
               mt: 2.5,
               color: colors.textSoft,
               lineHeight: 1.7,
-              fontSize: 14,
+              fontSize: fontSizes.small,
             }}
           >
-            Wartości zależą od konfiguracji (powiększenia, oprawy i korekcji
-            wzroku).
+            Wartości zależą od konfiguracji - powiększenia, oprawy i korekcji
+            wzroku.
           </Typography>
 
-          {/* Kafelki: luźniej (większy gap + padding + oddech między label/value) */}
-          <Box
-            sx={{
-              position: "relative",
-              mt: 3,
-              pb: 4,
-              display: "grid",
-              gap: 2, // ✅ było 1.5
-              gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
-            }}
-          >
-            {[
-              { label: "Odległość robocza", value: "50 cm" },
-              { label: "Pole widzenia", value: "100°" },
-              { label: "Waga zestawu", value: "300 g" },
-              { label: "Korekcja wzroku", value: "+- 3 dioptrie" },
-            ].map((row) => (
-              <Box
-                key={row.label}
-                sx={{
-                  borderRadius: 4,
-                  border: `1px solid ${colors.border}`,
-                  backgroundColor: colors.surfaceAlt,
-                  p: 2.5, // ✅ było 2
-                  boxShadow: colors.shadowSm,
-                }}
-              >
-                <Typography
+          <Box sx={{ mt: 2 }}>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: 2,
+                justifyItems: "start",
+              }}
+            >
+              {[
+                {
+                  label: "Odległość robocza",
+                  value: "Tutaj będą wpisane zakresy wartości roboczych",
+                },
+                {
+                  label: "Pole widzenia",
+                  value: "Tutaj będą wpisane zakresy pola widzenia",
+                },
+                {
+                  label: "Waga zestawu",
+                  value: "Tutaj będzie wpisana waga zestawu",
+                },
+                {
+                  label: "Korekcja wzroku",
+                  value: "Tutaj będzie wpisana korekcja wzroku",
+                },
+              ].map((param) => (
+                <Box
+                  key={param.label}
                   sx={{
-                    fontSize: 12,
-                    fontWeight: 900,
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    color: colors.textSoft,
-                    opacity: 0.85,
+                    display: "flex",
+                    flexDirection: "column", // nazwa nad wartością
+                    gap: 0.8, // odstęp między label a wartością
                   }}
                 >
-                  {row.label}
-                </Typography>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1.2 }}>
+                    {/* zielona kropka */}
+                    <Box
+                      sx={{
+                        width: 8,
+                        height: 8,
+                        borderRadius: "50%",
+                        backgroundColor: colors.accent,
+                        flex: "0 0 auto",
+                      }}
+                    />
+                    <Typography
+                      sx={{
+                        fontWeight: 700,
+                        color: colors.text,
+                        fontSize: fontSizes.text,
+                      }}
+                    >
+                      {param.label}
+                    </Typography>
+                  </Box>
 
-                <Typography
-                  sx={{
-                    mt: 1, // ✅ było 0.6 — więcej oddechu
-                    fontSize: 14,
-                    fontWeight: 800,
-                    color: colors.text,
-                    lineHeight: 1.35,
-                  }}
-                >
-                  {row.value}
-                </Typography>
-              </Box>
-            ))}
+                  <Typography
+                    sx={{
+                      fontWeight: 600,
+                      color: colors.textSoft,
+                      fontSize: fontSizes.small,
+                      ml: "16px", // opcjonalnie, żeby wartość była lekko przesunięta pod nazwę
+                    }}
+                  >
+                    {param.value}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
           </Box>
         </Box>
       </Box>
