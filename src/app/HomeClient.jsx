@@ -402,22 +402,6 @@ export default function HomeClient() {
           </Button>
         </Box>
 
-        {/* REVIEWS placeholder */}
-        <Box sx={{ mt: 7 }}>
-          <Typography
-            sx={{
-              fontSize: { xs: 24, md: 34 },
-              fontWeight: 900,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {home.reviews.heading}
-          </Typography>
-          <Typography sx={{ mt: 2, color: colors.textSoft, fontSize: 14 }}>
-            {home.reviews.hint}
-          </Typography>
-        </Box>
-
         {/* FAQ preview */}
         <Box sx={{ mt: 7 }}>
           <Typography

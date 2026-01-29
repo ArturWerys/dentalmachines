@@ -29,7 +29,7 @@ export default function TtlProductClient() {
           pb: 1,
           gap: { xs: 3, md: 4 },
           gridTemplateColumns: { xs: "1fr", md: "1.05fr 0.95fr" },
-          alignItems: "center", // ✅ było "start" — teraz wyśrodkowuje obraz względem karty
+          alignItems: "center",
         }}
       >
         {/* LEFT: Gallery */}
@@ -346,7 +346,7 @@ export default function TtlProductClient() {
                 },
                 {
                   label: "Zasilanie",
-                  value: "Akumulator Li-ion · do 8 h pracy",
+                  value: "Akumulator Li-ion - do 8 h pracy",
                 },
                 {
                   label: "Montaż",
@@ -354,7 +354,7 @@ export default function TtlProductClient() {
                 },
                 {
                   label: "Temperatura barwowa",
-                  value: "4 500 K – 6 500 K (światło neutralne–chłodne)",
+                  value: "4 500 K - 6 500 K (światło neutralne - chłodne)",
                 },
               ].map((param) => (
                 <Box

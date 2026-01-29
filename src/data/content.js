@@ -1,9 +1,9 @@
 const content = {
   nav: [
-    { href: "/products/ttl", label: "Produkty" },
-    { href: "/products/flipUp", label: "Dobór" },
-    { href: "/products/led", label: "Serwis" },
-    { href: "/reviews", label: "Opinie" },
+    { href: "/products/ttl", label: "Lupy TTL" },
+    { href: "/products/flipUp", label: "Lupy Flip-Up" },
+    { href: "/products/led", label: "Oświetlenie LED" },
+    { href: "/products/accessories", label: "Akcesoria" },
     { href: "/faq", label: "FAQ" },
     { href: "/contact", label: "Kontakt" },
   ],
@@ -79,11 +79,6 @@ const content = {
         "Konfiguracja – powiększenie, oprawa, LED, ewentualna korekcja",
       ],
       cta: { label: "Umów dobór", href: "/fitting" },
-    },
-
-    reviews: {
-      heading: "Dlaczego lekarze wybierają EYE OPTIC",
-      hint: "Tutaj przygotowałem miejsce na opinie",
     },
 
     faqPreview: {

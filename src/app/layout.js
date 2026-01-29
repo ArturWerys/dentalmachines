@@ -1,5 +1,6 @@
 import "./globals.css";
 import Providers from "@/components/Providers";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v16-appRouter";
 
 export const metadata = {
   title: "EYE OPTIC",
@@ -10,7 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pl">
       <body style={{ margin: 0 }}>
-        <Providers>{children}</Providers>
+        <AppRouterCacheProvider>
+          <Providers>{children}</Providers>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

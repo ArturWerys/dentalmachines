@@ -4,7 +4,7 @@ export const metadata = {
     "Lupy stomatologiczne EYE OPTIC: TTL, Flip-Up i oświetlenie LED. Profesjonalny dobór powiększenia i ergonomii. Umów konsultację.",
 };
 
-import HomeClient from "@/components/pages/HomeClient";
+import HomeClient from "@/app/HomeClient";
 
 export default function Page() {
   return <HomeClient />;

@@ -19,7 +19,7 @@ const theme = createTheme({
       "sans-serif",
     ].join(","),
   },
-  shape: { borderRadius: 16 },
+  shape: { borderRadius: 8 },
   components: {
     MuiButton: {
       styleOverrides: {
