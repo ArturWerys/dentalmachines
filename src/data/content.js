@@ -15,7 +15,7 @@ const content = {
         { title: "Precyzja", desc: "Więcej detalu, pewniejszy ruch" },
         { title: "Dopasowanie", desc: "Dobór pod specjalizację i styl pracy" },
       ],
-      ctaPrimary: { label: "Umów dobór lup", href: "/fitting" },
+      ctaPrimary: { label: "Umów dobór lup", href: "/contact" },
       ctaSecondary: { label: "Zobacz modele", href: "/products" },
     },
 

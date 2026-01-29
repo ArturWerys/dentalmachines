@@ -5,7 +5,7 @@ import colors from "@/data/colors";
 import AccessoriesProductClient from "./AccessoriesProductClient.jsx";
 
 export const metadata = {
-  title: "Akcesoria do lup EYE OPTIC – oprawy, paski, etui",
+  title: "Akcesoria do lup EYE OPTIC",
   description:
     "Akcesoria EYE OPTIC do lup stomatologicznych. Oprawy, paski stabilizujące, etui, osłony i elementy dopasowania.",
 };

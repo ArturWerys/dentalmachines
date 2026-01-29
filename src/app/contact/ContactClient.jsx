@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography, Link } from "@mui/material";
 import colors from "@/data/colors";
 import contact from "@/data/contact_info.json";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
@@ -50,16 +50,21 @@ const contactInfoData = [
     id: "phone",
     icon: <PhoneOutlinedIcon sx={{ fontSize: 20 }} />,
     value: contact.phone,
+    href: `tel:${contact.phone.replace(/\s/g, "")}`,
   },
   {
     id: "email",
     icon: <EmailOutlinedIcon sx={{ fontSize: 20 }} />,
     value: contact.email,
+    href: `mailto:${contact.email}`,
   },
   {
     id: "address",
     icon: <LocationOnOutlinedIcon sx={{ fontSize: 20 }} />,
     value: contact.address,
+    href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      contact.address,
+    )}`,
   },
 ];
 
@@ -87,7 +92,8 @@ function ContactInfoPanel() {
       </Typography>
 
       <Typography sx={{ mt: 1.5, color: colors.textSoft, lineHeight: 1.8 }}>
-        Masz pytanie o konkretną lupę, jej konfigurację, dopasowanie lub inny produkt? Napisz lub zadzwoń do nas!
+        Masz pytanie o konkretną lupę, jej konfigurację, dopasowanie lub inny
+        produkt? Napisz lub zadzwoń do nas!
       </Typography>
 
       <Box sx={{ mt: 3.25, display: "grid", gap: 1.4 }}>
@@ -112,16 +118,23 @@ function ContactInfoPanel() {
               {item.icon}
             </Box>
 
-            <Typography
+            <Link
+              component="a"
+              href={item.href}
+              underline="none"
+              target={item.id === "address" ? "_blank" : undefined}
+              rel={item.id === "address" ? "noopener noreferrer" : undefined}
               sx={{
                 color: colors.textSoft,
                 lineHeight: 1.7,
-                fontWeight: 500, //
+                fontWeight: 500,
                 letterSpacing: "0.01em",
+                "&:hover": { color: colors.text, textDecoration: "underline" },
+                textDecorationColor: colors.border,
               }}
             >
               {item.value}
-            </Typography>
+            </Link>
           </Box>
         ))}
       </Box>
@@ -173,7 +186,7 @@ function ContactForm({ form, onChange, onSubmit }) {
           }}
         >
           <Box>
-            <Typography sx={{ mb: 0.75, fontWeight: 900, color: colors.text }}>
+            <Typography sx={{ mb: 0.75, fontWeight: 700, color: colors.text }}>
               Imię
             </Typography>
             <TextField
@@ -188,7 +201,7 @@ function ContactForm({ form, onChange, onSubmit }) {
           </Box>
 
           <Box>
-            <Typography sx={{ mb: 0.75, fontWeight: 900, color: colors.text }}>
+            <Typography sx={{ mb: 0.75, fontWeight: 700, color: colors.text }}>
               Nazwisko
             </Typography>
             <TextField
@@ -204,7 +217,7 @@ function ContactForm({ form, onChange, onSubmit }) {
         </Box>
 
         <Box sx={{ mt: 2 }}>
-          <Typography sx={{ mb: 0.75, fontWeight: 900, color: colors.text }}>
+          <Typography sx={{ mb: 0.75, fontWeight: 700, color: colors.text }}>
             Email
           </Typography>
           <TextField
@@ -221,7 +234,7 @@ function ContactForm({ form, onChange, onSubmit }) {
         </Box>
 
         <Box sx={{ mt: 2 }}>
-          <Typography sx={{ mb: 0.75, fontWeight: 900, color: colors.text }}>
+          <Typography sx={{ mb: 0.75, fontWeight: 700, color: colors.text }}>
             Numer telefonu
           </Typography>
           <TextField
@@ -237,7 +250,7 @@ function ContactForm({ form, onChange, onSubmit }) {
         </Box>
 
         <Box sx={{ mt: 2 }}>
-          <Typography sx={{ mb: 0.75, fontWeight: 900, color: colors.text }}>
+          <Typography sx={{ mb: 0.75, fontWeight: 700, color: colors.text }}>
             Wiadomość
           </Typography>
           <TextField
@@ -299,7 +312,7 @@ export default function ContactClient() {
     <Box sx={{ mt: { xs: 4, md: 6 } }}>
       <Typography
         sx={{
-          fontWeight: 900,
+          fontWeight: 700,
           letterSpacing: "-0.03em",
           lineHeight: 1.05,
           fontSize: fontSizes.title,
@@ -314,11 +327,11 @@ export default function ContactClient() {
         sx={{
           display: "grid",
           gridTemplateColumns: { xs: "1fr", md: "0.42fr 0.58fr" },
-          gap: 0, // ✅ jedna karta na mobile
+          gap: 0,
           overflow: "hidden",
           borderRadius: 5,
           border: `1px solid ${colors.border}`,
-          boxShadow: colors.shadowSm, // ✅ bardziej klinicznie
+          boxShadow: colors.shadowSm,
           backgroundColor: colors.surface,
         }}
       >

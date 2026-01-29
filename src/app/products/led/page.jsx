@@ -5,7 +5,7 @@ import colors from "@/data/colors";
 import LedProductClient from "./LedProductClient.jsx";
 
 export const metadata = {
-  title: "Oświetlenie LED do lup EYE OPTIC – światło bez cieni",
+  title: "Oświetlenie LED EYE OPTIC",
   description:
     "Oświetlenie LED EYE OPTIC do lup stomatologicznych. Równomierna wiązka w osi widzenia, większy komfort i widoczność detali.",
 };

@@ -7,8 +7,6 @@ import {
   Container,
   Divider,
   Link,
-  MenuItem,
-  TextField,
   Typography,
 } from "@mui/material";
 import NorthEastRoundedIcon from "@mui/icons-material/NorthEastRounded";
@@ -54,17 +52,6 @@ export default function HomeClient() {
         >
           {/* Left */}
           <Box>
-            <Typography
-              sx={{
-                fontSize: 14,
-                fontWeight: 900,
-                letterSpacing: "0.14em",
-                color: colors.textMute,
-              }}
-            >
-              EYE OPTIC
-            </Typography>
-
             <Typography
               sx={{
                 mt: 1.2,
@@ -454,103 +441,6 @@ export default function HomeClient() {
             {home.faqPreview.moreLabel}{" "}
             <NorthEastRoundedIcon sx={{ fontSize: 18 }} />
           </Link>
-        </Box>
-
-        {/* CONTACT FORM */}
-        <Box sx={{ mt: 7 }}>
-          <Typography
-            sx={{
-              fontSize: { xs: 28, md: 40 },
-              fontWeight: 900,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {home.contact.heading}
-          </Typography>
-
-          <Box
-            component="form"
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert("Wersja demo nie obsługuje wysyłania formularzy.");
-            }}
-            sx={{
-              mt: 3,
-              borderRadius: 4,
-              p: { xs: 2, md: 3 },
-              backgroundColor: colors.surfaceAlt,
-              border: `1px solid ${colors.border}`,
-              boxShadow: colors.shadowSm,
-            }}
-          >
-            <Box
-              sx={{
-                display: "grid",
-                gap: 2,
-                gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" },
-              }}
-            >
-              <TextField
-                label="Imię i nazwisko"
-                fullWidth
-                required
-                sx={fieldSx}
-              />
-              <TextField label="Telefon" fullWidth required sx={fieldSx} />
-              <TextField
-                label="E-mail"
-                type="email"
-                fullWidth
-                required
-                sx={fieldSx}
-              />
-
-              <TextField
-                select
-                label="Specjalizacja"
-                fullWidth
-                defaultValue={home.contact.fields.specializations[0]}
-                sx={fieldSx}
-              >
-                {home.contact.fields.specializations.map((s) => (
-                  <MenuItem key={s} value={s}>
-                    {s}
-                  </MenuItem>
-                ))}
-              </TextField>
-
-              <TextField
-                select
-                label="Co Cię interesuje"
-                fullWidth
-                defaultValue={home.contact.fields.interests[3]}
-                sx={fieldSx}
-              >
-                {home.contact.fields.interests.map((s) => (
-                  <MenuItem key={s} value={s}>
-                    {s}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Box>
-
-            <Divider sx={{ my: 2.5, borderColor: colors.border }} />
-
-            <Button
-              type="submit"
-              variant="contained"
-              disableElevation
-              sx={{
-                borderRadius: 3,
-                fontWeight: 900,
-                px: 3,
-                py: 1.2,
-                textTransform: "none",
-              }}
-            >
-              Wyślij — oddzwonimy / odpiszemy
-            </Button>
-          </Box>
         </Box>
 
         <Footer />

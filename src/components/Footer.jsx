@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <Box
       component="footer"
-      sx={{ mt: 8, py: 5, borderTop: "1px solid rgba(255,255,255,0.18)" }}
+      sx={{ mt: 8, py: 5, borderTop: `1px solid ${colors.border}` }}
     >
       <Container maxWidth="lg" sx={{ px: { xs: 2, md: 3 } }}>
         <Box
@@ -28,7 +28,7 @@ export default function Footer() {
               sx={{
                 mt: 1,
                 color: colors.textSoft,
-                fontSize: 14,
+                fontSize: 13,
                 maxWidth: 360,
               }}
             >
@@ -36,43 +36,27 @@ export default function Footer() {
               pracę w gabinecie.
             </Typography>
           </Box>
-
           <Box>
             <Typography
-              sx={{ fontWeight: 800, color: colors.text, fontSize: 14 }}
+              sx={{ fontWeight: 700, color: colors.text, fontSize: 13 }}
             >
-              Szybkie linki
+              Produkty
             </Typography>
             <Box sx={{ mt: 1.5, display: "grid", gap: 1 }}>
-              <FooterLink href="/products">Produkty</FooterLink>
-              <FooterLink href="/fitting">Dobór</FooterLink>
-              <FooterLink href="/service">Serwis</FooterLink>
-              <FooterLink href="/faq">FAQ</FooterLink>
-              <FooterLink href="/contact">Kontakt</FooterLink>
+              <FooterLink href="/products/ttl">Lupy TTL</FooterLink>
+              <FooterLink href="/products/flipUp">Lupy Flip-Up</FooterLink>
+              <FooterLink href="/products/led">Oświetlenie LED</FooterLink>
+              <FooterLink href="/products/accessories">Akcesoria</FooterLink>
             </Box>
           </Box>
 
           <Box>
             <Typography
-              sx={{ fontWeight: 800, color: colors.text, fontSize: 14 }}
-            >
-              Dokumenty
-            </Typography>
-            <Box sx={{ mt: 1.5, display: "grid", gap: 1 }}>
-              <FooterLink href="/privacy">Polityka prywatności</FooterLink>
-              <FooterLink href="/cookies">Cookies</FooterLink>
-              <FooterLink href="/terms">Regulamin</FooterLink>
-              <FooterLink href="/downloads">Do pobrania</FooterLink>
-            </Box>
-          </Box>
-
-          <Box>
-            <Typography
-              sx={{ fontWeight: 800, color: colors.text, fontSize: 14 }}
+              sx={{ fontWeight: 700, color: colors.text, fontSize: 13 }}
             >
               Kontakt
             </Typography>
-            <Typography sx={{ mt: 1.5, color: colors.textSoft, fontSize: 14 }}>
+            <Typography sx={{ mt: 1.5, color: colors.textSoft, fontSize: 13 }}>
               <Link
                 href={`mailto:${contact.email}`}
                 underline="hover"
@@ -81,20 +65,49 @@ export default function Footer() {
                 {contact.email}
               </Link>
             </Typography>
-            <Typography sx={{ mt: 0.5, color: colors.textSoft, fontSize: 14 }}>
-              {contact.phone}
+            <Typography sx={{ mt: 0.5, color: colors.textSoft, fontSize: 13 }}>
+              <Link
+                href={`tel:${contact.phone.replace(/\s/g, "")}`}
+                underline="hover"
+                sx={{ color: colors.textSoft }}
+              >
+                {contact.phone}
+              </Link>
             </Typography>
-            <Typography sx={{ mt: 0.5, color: colors.textSoft, fontSize: 14 }}>
-              {contact.address}
+            <Typography sx={{ mt: 0.5, color: colors.textSoft, fontSize: 13 }}>
+              <Link
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                  contact.address,
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                underline="hover"
+                sx={{ color: colors.textSoft }}
+              >
+                {contact.address}
+              </Link>
             </Typography>
           </Box>
         </Box>
 
         <Box
-          sx={{ mt: 4, pt: 3, borderTop: "1px solid rgba(255,255,255,0.18)" }}
+          sx={{
+            mt: 4,
+            pt: 3,
+            borderTop: `1px solid ${colors.border}`,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: 2,
+            flexWrap: "wrap",
+          }}
         >
-          <Typography sx={{ color: "rgba(255,255,255,0.65)", fontSize: 12 }}>
+          <Typography sx={{ color: colors.textSoft, fontSize: 12 }}>
             © {new Date().getFullYear()} {contact.brand}
+          </Typography>
+
+          <Typography sx={{ color: colors.textSoft, fontSize: 12 }}>
+            developed by Artur Werys
           </Typography>
         </Box>
       </Container>
@@ -109,9 +122,10 @@ function FooterLink({ href, children }) {
       href={href}
       underline="none"
       sx={{
-        color: "rgba(255,255,255,0.78)",
-        fontSize: 14,
-        "&:hover": { color: "white" },
+        color: colors.textSoft,
+        fontSize: 13,
+        "&:hover": { color: colors.text, textDecoration: "underline" },
+        textDecorationColor: colors.border,
       }}
     >
       {children}

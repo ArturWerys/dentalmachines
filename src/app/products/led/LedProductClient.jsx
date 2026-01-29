@@ -231,7 +231,7 @@ export default function TtlProductClient() {
           <Box sx={{ mt: 3.25 }}>
             <Button
               component={NextLink}
-              href="/fitting"
+              href="/contact"
               variant="contained"
               disableElevation
               sx={{
@@ -333,17 +333,14 @@ export default function TtlProductClient() {
           <Box sx={{ mt: 2 }}>
             <Box
               sx={{
+                mt: 2.5,
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 2,
-                justifyItems: "start",
+                gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+                gap: { xs: 2.2, sm: 3 },
               }}
             >
               {[
-                {
-                  label: "Wersja",
-                  value: "Przewodowa lub bezprzewodowa",
-                },
+                { label: "Wersja", value: "Przewodowa lub bezprzewodowa" },
                 {
                   label: "Zasilanie",
                   value: "Akumulator Li-ion - do 8 h pracy",
@@ -354,33 +351,28 @@ export default function TtlProductClient() {
                 },
                 {
                   label: "Temperatura barwowa",
-                  value: "4 500 K - 6 500 K (światło neutralne - chłodne)",
+                  value: "4 500 K - 6 500 K (neutralne - chłodne)",
                 },
               ].map((param) => (
-                <Box
-                  key={param.label}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column", // nazwa nad wartością
-                    gap: 0.8, // odstęp między label a wartością
-                  }}
-                >
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1.2 }}>
-                    {/* zielona kropka */}
+                <Box key={param.label} sx={{ minWidth: 0 }}>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1.1 }}>
                     <Box
                       sx={{
                         width: 8,
                         height: 8,
-                        borderRadius: "50%",
+                        borderRadius: 999,
                         backgroundColor: colors.accent,
+                        opacity: 0.9,
                         flex: "0 0 auto",
                       }}
                     />
                     <Typography
                       sx={{
-                        fontWeight: 700,
+                        fontWeight: 700, // było 700/800 -> zostaje, ale spokojniej
                         color: colors.text,
-                        fontSize: fontSizes.text,
+                        fontSize: 16, // było fontSizes.text (18) -> mniej krzyku
+                        letterSpacing: "0.01em",
+                        lineHeight: 1.2,
                       }}
                     >
                       {param.label}
@@ -389,10 +381,12 @@ export default function TtlProductClient() {
 
                   <Typography
                     sx={{
-                      fontWeight: 600,
+                      mt: 0.8,
                       color: colors.textSoft,
-                      fontSize: fontSizes.small,
-                      ml: "16px", // opcjonalnie, żeby wartość była lekko przesunięta pod nazwę
+                      fontSize: 14, // mniejsze = bardziej medical
+                      lineHeight: 1.7,
+                      fontWeight: 500, // było 600 -> spokojniej
+                      pl: "17px", // wyrównanie pod tekstem (kropka + gap)
                     }}
                   >
                     {param.value}

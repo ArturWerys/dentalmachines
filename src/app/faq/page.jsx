@@ -5,7 +5,7 @@ import colors from "@/data/colors";
 import FAQClientPage from "./FAQClient.jsx";
 
 export const metadata = {
-  title: "Sekcja FAQ - najczęściej zadawane pytania dotyczące lup EYE OPTIC",
+  title: "Sekcja FAQ EYE OPTIC",
   description:
     "Sekcja FAQ - najczęściej zadawane pytania dotyczące lup EYE OPTIC.",
 };

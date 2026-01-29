@@ -224,7 +224,7 @@ export default function TtlProductClient() {
           <Box sx={{ mt: 3.25 }}>
             <Button
               component={NextLink}
-              href="/fitting"
+              href="/contact"
               variant="contained"
               disableElevation
               sx={{
@@ -294,11 +294,11 @@ export default function TtlProductClient() {
               alignItems: "center",
               gap: 1,
               fontSize: fontSizes.small,
-              fontWeight: 900,
-              letterSpacing: "0.12em",
+              fontWeight: 700,
+              letterSpacing: "0.14em",
               textTransform: "uppercase",
               color: colors.textSoft,
-              opacity: 0.9,
+              opacity: 0.75,
             }}
           >
             Specyfikacja / konfiguracja
@@ -308,7 +308,7 @@ export default function TtlProductClient() {
             sx={{
               mt: 1,
               fontSize: fontSizes.subtitle,
-              fontWeight: 900,
+              fontWeight: 800,
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
               color: colors.text,
@@ -326,14 +326,14 @@ export default function TtlProductClient() {
           {/* Podpis dla powiększeń */}
           <Typography
             sx={{
-              mt: 2.5,
-              mb: 1,
+              mt: 3,
+              mb: 0.75,
               fontSize: fontSizes.small,
-              fontWeight: 900,
-              letterSpacing: "0.10em",
+              fontWeight: 700,
+              letterSpacing: "0.14em",
               textTransform: "uppercase",
               color: colors.textSoft,
-              opacity: 0.9,
+              opacity: 0.75,
             }}
           >
             Dostępne powiększenia
@@ -343,7 +343,7 @@ export default function TtlProductClient() {
 
           <Typography
             sx={{
-              mt: -0.25,
+              mt: 0,
               mb: 1.5,
               fontSize: fontSizes.small,
               lineHeight: 1.7,
@@ -387,7 +387,8 @@ export default function TtlProductClient() {
                     sx={{
                       fontWeight: 700,
                       color: colors.text,
-                      fontSize: fontSizes.text,
+                      fontSize: 16,
+                      letterSpacing: "0.01em",
                     }}
                   >
                     {m}
@@ -411,17 +412,6 @@ export default function TtlProductClient() {
             overflow: "hidden",
           }}
         >
-          <Box
-            sx={{
-              position: "absolute",
-              inset: 0,
-              pointerEvents: "none",
-              background:
-                "radial-gradient(900px 220px at 20% 0%, rgba(255,255,255,0.08) 0%, transparent 60%)",
-              opacity: 0.9,
-            }}
-          />
-
           <Typography
             sx={{
               position: "relative",

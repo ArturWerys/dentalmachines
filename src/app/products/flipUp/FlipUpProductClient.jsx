@@ -230,7 +230,7 @@ export default function TtlProductClient() {
           <Box sx={{ mt: 3.25 }}>
             <Button
               component={NextLink}
-              href="/fitting"
+              href="/contact"
               variant="contained"
               disableElevation
               sx={{
@@ -300,11 +300,11 @@ export default function TtlProductClient() {
               alignItems: "center",
               gap: 1,
               fontSize: fontSizes.small,
-              fontWeight: 900,
-              letterSpacing: "0.12em",
+              fontWeight: 700,
+              letterSpacing: "0.14em",
               textTransform: "uppercase",
               color: colors.textSoft,
-              opacity: 0.9,
+              opacity: 0.75,
             }}
           >
             Specyfikacja / konfiguracja
@@ -314,7 +314,7 @@ export default function TtlProductClient() {
             sx={{
               mt: 1,
               fontSize: fontSizes.subtitle,
-              fontWeight: 900,
+              fontWeight: 800,
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
               color: colors.text,
@@ -332,14 +332,14 @@ export default function TtlProductClient() {
           {/* Podpis dla powiększeń */}
           <Typography
             sx={{
-              mt: 2.5,
-              mb: 1,
+              mt: 3,
+              mb: 0.75,
               fontSize: fontSizes.small,
-              fontWeight: 900,
-              letterSpacing: "0.10em",
+              fontWeight: 700,
+              letterSpacing: "0.14em",
               textTransform: "uppercase",
               color: colors.textSoft,
-              opacity: 0.9,
+              opacity: 0.75,
             }}
           >
             Dostępne powiększenia
@@ -349,7 +349,7 @@ export default function TtlProductClient() {
 
           <Typography
             sx={{
-              mt: -0.25,
+              mt: 0,
               mb: 1.5,
               fontSize: fontSizes.small,
               lineHeight: 1.7,
@@ -361,13 +361,14 @@ export default function TtlProductClient() {
           </Typography>
 
           {/* Kafelki powiększeń */}
-          <Box sx={{ mt: 2 }}>
+          {/* Kafelki powiększeń — jak w LED */}
+          <Box sx={{ mt: 1.25 }}>
             <Box
               sx={{
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 2,
-                justifyItems: "start", // wyrównanie do lewej
+                gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+                gap: { xs: 1.6, sm: 2 },
+                justifyItems: "start",
               }}
             >
               {["2.5×", "4.0×", "3.0×", "3.5×"].map((m) => (
@@ -379,12 +380,11 @@ export default function TtlProductClient() {
                     gap: 1.2,
                   }}
                 >
-                  {/* zielona kropka */}
                   <Box
                     sx={{
                       width: 8,
                       height: 8,
-                      borderRadius: "50%",
+                      borderRadius: 999,
                       backgroundColor: colors.accent,
                       flex: "0 0 auto",
                     }}
@@ -393,7 +393,7 @@ export default function TtlProductClient() {
                     sx={{
                       fontWeight: 700,
                       color: colors.text,
-                      fontSize: fontSizes.text,
+                      fontSize: fontSizes.text, // albo 16 jeśli chcesz lżej
                     }}
                   >
                     {m}

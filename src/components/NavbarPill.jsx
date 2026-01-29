@@ -7,6 +7,7 @@ import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import Collapse from "@mui/material/Collapse";
+import MailRoundedIcon from "@mui/icons-material/MailRounded";
 
 import colors from "@/data/colors";
 import content from "@/data/content";
@@ -147,6 +148,19 @@ export default function NavbarPill() {
             </IconButton>
             <IconButton
               component="a"
+              href={`mailto:${contact.email}`}
+              sx={{
+                borderRadius: 3,
+                backgroundColor: colors.pillBg,
+                color: colors.text,
+                "&:hover": { backgroundColor: colors.pillHover },
+              }}
+              aria-label="Napisz maila"
+            >
+              <MailRoundedIcon />
+            </IconButton>
+            <IconButton
+              component="a"
               href={`tel:${contact.phone.replace(/\s/g, "")}`}
               sx={{
                 borderRadius: 3,
@@ -161,7 +175,7 @@ export default function NavbarPill() {
 
             <Button
               component={NextLink}
-              href="/fitting"
+              href="/contact"
               variant="contained"
               disableElevation
               sx={{
@@ -176,30 +190,6 @@ export default function NavbarPill() {
             >
               Umów dobór
             </Button>
-            {/* 
-            <Box
-              sx={{
-                display: { xs: "none", md: "flex" },
-                alignItems: "center",
-                gap: 0.5,
-                borderRadius: 3,
-                px: 2,
-                py: 1.35,
-                backgroundColor: colors.pillBg,
-                color: colors.textSoft,
-                "&:hover": {
-                  backgroundColor: colors.pillHover,
-                  color: colors.text,
-                },
-                cursor: "pointer",
-                userSelect: "none",
-              }}
-            >
-              <Typography sx={{ fontSize: 14, fontWeight: 800 }}>PL</Typography>
-              <KeyboardArrowDownRoundedIcon
-                sx={{ fontSize: 18, opacity: 0.9 }}
-              />
-            </Box> */}
           </Box>
         </Box>
       </Box>
