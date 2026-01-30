@@ -31,11 +31,11 @@ const content = {
     },
 
     products: {
-      heading: "Wybierz rozwiązanie EYE OPTIC dla siebie",
+      heading: "Produkty EYE OPTIC - wybierz rozwiązanie dla siebie",
       tiles: [
         {
           title: "Lupy TTL",
-          desc: "Maksymalna stabilność i precyzja obrazu. Dla osób, które chcą “ustaw i pracuj”.",
+          desc: "Maksymalna stabilność i precyzja obrazu.",
           href: "/products/ttl",
           cta: "Zobacz TTL",
         },
@@ -61,12 +61,12 @@ const content = {
     },
 
     compare: {
-      heading: "TTL czy Flip-Up? Wybierz świadomie.",
+      heading: "Lupy TTL czy Flip-Up? Wybierz idealne rozwiązanie.",
       rows: [
-        { left: "Stabilność obrazu", right: "TTL wyżej" },
-        { left: "Regulacja i odchylanie optyki", right: "Flip-Up wyżej" },
-        { left: "Personalizacja", right: "TTL wyżej" },
-        { left: "Start i praca “mix”", right: "Flip-Up wyżej" },
+        { left: "Stabilność obrazu", right: "TTL" },
+        { left: "Regulacja i odchylanie optyki", right: "Flip-Up" },
+        { left: "Personalizacja", right: "TTL" },
+        { left: "Start i praca “mix”", right: "Flip-Up" },
       ],
       note: "Jeśli nie wiesz, co wybrać — zrobimy szybki dobór na podstawie specjalizacji, wzrostu i pozycji pracy.",
     },
@@ -74,9 +74,9 @@ const content = {
     steps: {
       heading: "Dobór EYE OPTIC w 3 krokach",
       items: [
-        "Rozmowa (5–10 min) – specjalizacja, nawyki, oczekiwania",
-        "Pomiary – PD, odległość robocza, preferowana pozycja",
-        "Konfiguracja – powiększenie, oprawa, LED, ewentualna korekcja",
+        "Rozmowa (5-10 min) - specjalizacja, nawyki, oczekiwania",
+        "Pomiary - PD, odległość robocza, preferowana pozycja",
+        "Konfiguracja - powiększenie, oprawa, LED, ewentualna korekcja",
       ],
       cta: { label: "Umów dobór", href: "/fitting" },
     },
@@ -94,7 +94,7 @@ const content = {
         },
         {
           q: "TTL czy Flip-Up — co będzie lepsze?",
-          a: "TTL: maksymalna stabilność i precyzja. Flip-Up: elastyczność i regulacja, super do pracy “mix” i na start.",
+          a: "TTL charakteryzuje się maksymalną stabilnością i precyzją. Flip-Up elastycznością i regulacją, idealna do pracy typu “mix” i na start.",
         },
       ],
       moreHref: "/faq",

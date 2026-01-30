@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import NorthEastRoundedIcon from "@mui/icons-material/NorthEastRounded";
+import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 
 import colors from "@/data/colors";
 import content from "@/data/content";
@@ -19,16 +20,6 @@ import Footer from "@/components/Footer";
 export default function HomeClient() {
   const { home } = content;
 
-  const fieldSx = {
-    "& .MuiInputBase-root": {
-      backgroundColor: colors.surface,
-      borderRadius: 3,
-    },
-    "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: colors.border,
-    },
-  };
-
   return (
     <Box
       sx={{
@@ -37,7 +28,10 @@ export default function HomeClient() {
         color: colors.text,
       }}
     >
-      <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 } }}>
+      <Container
+        maxWidth="lg"
+        sx={{ py: { xs: 4, md: 6 }, pt: { xs: "72px", md: "80px" } }}
+      >
         <NavbarPill />
 
         {/* HERO */}
@@ -76,15 +70,14 @@ export default function HomeClient() {
               }}
             >
               Dobierzemy powiększenie, odległość roboczą i konfigurację tak,
-              żeby praca była wygodniejsza i dokładniejsza. Liczy się ergonomia,
-              jasny obraz i dopasowanie do realnej pracy w gabinecie.
+              żeby praca była wygodniejsza i dokładniejsza. Erogonomia pracy, jasny, wyraźny obraz oraz po prostu wygoda to najważniejsze rzeczy podczas pracy w gabinecie.
             </Typography>
 
             {/* CTA (TYLKO JEDEN BLOK – bez duplikatu) */}
             <Box sx={{ mt: 3, display: "flex", gap: 1.5, flexWrap: "wrap" }}>
               <Button
                 component={NextLink}
-                href="/fitting"
+                href="/contact"
                 variant="contained"
                 disableElevation
                 sx={{
@@ -100,7 +93,7 @@ export default function HomeClient() {
 
               <Button
                 component={NextLink}
-                href="/products"
+                href="/#products"
                 variant="outlined"
                 sx={{
                   borderRadius: 3,
@@ -149,7 +142,7 @@ export default function HomeClient() {
               <Box sx={{ mt: 2.4, display: "grid", gap: 2 }}>
                 <Step
                   n="1"
-                  title="Rozmowa (5–10 min)"
+                  title="Rozmowa (5-10 min)"
                   desc="Specjalizacja, nawyki pracy, oczekiwania."
                 />
                 <Step
@@ -167,20 +160,20 @@ export default function HomeClient() {
           </Box>
         </Box>
 
-        {/* TRUST (bliżej CTA, 3 obok siebie na desktopie) */}
         <Box
           sx={{
             mt: { xs: 3, md: 3.5 },
             display: "grid",
-            gap: 2.5,
-            gridTemplateColumns: { xs: "1fr", md: "repeat(3, 1fr)" },
+            gap: 4.5,
+            gridTemplateColumns: { xs: "1fr", md: "repeat(4, 1fr)" },
             color: "rgba(15,23,42,0.70)",
           }}
         >
           {[
             "Dobór pod specjalizację",
-            "Korekcja wzroku w konfiguracji",
-            "TTL / Flip-Up / LED — do wyboru",
+            "Korekcja wzroku",
+            "Lupy TTL oraz Flip-Up",
+            "Oświetlenie LED i akcesoria",
           ].map((t) => (
             <Box
               key={t}
@@ -189,7 +182,7 @@ export default function HomeClient() {
                 alignItems: "center",
                 gap: 1.2,
                 fontWeight: 700,
-                whiteSpace: "nowrap",
+                whiteSpace: "normal",
               }}
             >
               <Box
@@ -244,6 +237,20 @@ export default function HomeClient() {
                 }}
               />
 
+              {/* overlay BEFORE cards */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  inset: 0,
+                  background: {
+                    xs: "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0) 55%)",
+                    md: "linear-gradient(to top, rgba(0,0,0,0.32), rgba(0,0,0,0) 58%)",
+                  },
+                  pointerEvents: "none",
+                }}
+              />
+
+              {/* cards on top */}
               <Box
                 sx={{
                   position: "absolute",
@@ -296,7 +303,7 @@ export default function HomeClient() {
         </Box>
 
         {/* PRODUCTS */}
-        <Box sx={{ mt: 7 }}>
+        <Box id="products" sx={{ mt: 7, scrollMarginTop: 110 }}>
           <Typography
             sx={{
               fontSize: { xs: 28, md: 40 },
@@ -328,6 +335,7 @@ export default function HomeClient() {
               fontSize: { xs: 24, md: 34 },
               fontWeight: 900,
               letterSpacing: "-0.02em",
+              color: colors.text,
             }}
           >
             {home.compare.heading}
@@ -344,23 +352,36 @@ export default function HomeClient() {
             }}
           >
             {home.compare.rows.map((r, idx) => (
-              <Box
-                key={r.left}
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: 2,
-                  px: 2.5,
-                  py: 2,
-                  backgroundColor: idx % 2 ? colors.surfaceAlt : colors.surface,
-                }}
-              >
-                <Typography sx={{ color: colors.textSoft, fontWeight: 700 }}>
-                  {r.left}
-                </Typography>
-                <Typography sx={{ color: colors.text, fontWeight: 900 }}>
-                  {r.right}
-                </Typography>
+              <Box key={r.left}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    gap: 2,
+                    px: { xs: 2, md: 2.5 },
+                    py: { xs: 1.6, md: 1.9 },
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      color: colors.textSoft,
+                      fontWeight: 700,
+                      fontSize: 15,
+                      lineHeight: 1.25,
+                    }}
+                  >
+                    {r.left}
+                  </Typography>
+
+                  {/* prawa strona jako pill */}
+                  <WinnerPill label={r.right} />
+                </Box>
+
+                {/* divider zamiast zebra */}
+                {idx !== home.compare.rows.length - 1 && (
+                  <Divider sx={{ borderColor: "rgba(15,23,42,0.08)" }} />
+                )}
               </Box>
             ))}
           </Box>
@@ -373,7 +394,7 @@ export default function HomeClient() {
 
           <Button
             component={NextLink}
-            href="/fitting"
+            href="/contact"
             variant="contained"
             disableElevation
             sx={{
@@ -394,7 +415,7 @@ export default function HomeClient() {
           <Typography
             sx={{
               fontSize: { xs: 24, md: 34 },
-              fontWeight: 900,
+              fontWeight: 800,
               letterSpacing: "-0.02em",
             }}
           >
@@ -413,7 +434,7 @@ export default function HomeClient() {
                   boxShadow: colors.shadowSm,
                 }}
               >
-                <Typography sx={{ fontWeight: 900, color: colors.text }}>
+                <Typography sx={{ fontWeight: 800, color: colors.text }}>
                   {it.q}
                 </Typography>
                 <Typography
@@ -467,13 +488,13 @@ function OfferCard({ title, desc }) {
         transition:
           "transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease",
         "&:hover": {
-          transform: "translateY(-2px)",
-          boxShadow: "0 14px 30px rgba(15,23,42,0.14)",
+          transform: "translateY(-1px)",
+          boxShadow: "0 12px 26px rgba(15,23,42,0.11)",
           borderColor: "rgba(15,23,42,0.14)",
         },
       }}
     >
-      <Typography sx={{ fontSize: 16, fontWeight: 900 }}>{title}</Typography>
+      <Typography sx={{ fontSize: 16, fontWeight: 800 }}>{title}</Typography>
 
       <Typography
         sx={{
@@ -567,7 +588,7 @@ function Step({ n, title, desc }) {
           color: colors.accent,
           display: "grid",
           placeItems: "center",
-          fontWeight: 900,
+          fontWeight: 800,
           fontSize: 13,
           mt: "2px",
         }}
@@ -578,7 +599,7 @@ function Step({ n, title, desc }) {
       <Box>
         <Typography
           sx={{
-            fontWeight: 900,
+            fontWeight: 800,
             fontSize: 15,
             lineHeight: 1.25,
             color: colors.text,
@@ -597,6 +618,28 @@ function Step({ n, title, desc }) {
           {desc}
         </Typography>
       </Box>
+    </Box>
+  );
+}
+function WinnerPill({ label }) {
+  return (
+    <Box
+      sx={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 0.6,
+        px: 1.2,
+        py: 0.55,
+        backgroundColor: "rgba(255,255,255,0.65)",
+        backdropFilter: "blur(8px)",
+        fontWeight: 800,
+        color: "rgba(15,23,42,0.85)",
+        lineHeight: 1,
+        whiteSpace: "nowrap",
+      }}
+    >
+      {label}
+      <TrendingUpRoundedIcon sx={{ fontSize: 18, opacity: 0.7 }} />
     </Box>
   );
 }
