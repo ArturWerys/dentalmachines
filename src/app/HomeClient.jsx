@@ -1,6 +1,7 @@
 "use client";
 
 import NextLink from "next/link";
+import { useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -9,7 +10,10 @@ import {
   Link,
   Typography,
 } from "@mui/material";
+
 import NorthEastRoundedIcon from "@mui/icons-material/NorthEastRounded";
+import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
+import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 
 import colors from "@/data/colors";
@@ -19,6 +23,68 @@ import Footer from "@/components/Footer";
 
 export default function HomeClient() {
   const { home } = content;
+
+  // --- products carousel (prosta, solidna) ---
+  const scrollerRef = useRef(null);
+  const [drag, setDrag] = useState({ active: false, x: 0, left: 0 });
+
+  const scrollByCard = (dir) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    // przewiń o ~1 kartę (85% szerokości widoku na xs albo ~340 na md)
+    const card = el.querySelector("[data-card='1']");
+    const step = card ? card.getBoundingClientRect().width + 16 : 360;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
+  const onMouseDown = (e) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    setDrag({ active: true, x: e.pageX, left: el.scrollLeft });
+    el.style.cursor = "grabbing";
+  };
+
+  const onMouseMove = (e) => {
+    const el = scrollerRef.current;
+    if (!el || !drag.active) return;
+    const dx = e.pageX - drag.x;
+    el.scrollLeft = drag.left - dx;
+  };
+  const snapToNearestCard = () => {
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    const cards = Array.from(el.querySelectorAll("[data-card='1']"));
+    if (!cards.length) return;
+
+    // szukamy karty, której lewy brzeg jest najbliżej aktualnego scrollLeft
+    const current = el.scrollLeft;
+
+    let bestLeft = 0;
+    let bestDist = Infinity;
+
+    for (const c of cards) {
+      const left = c.offsetLeft; // działa dobrze, bo karty są dziećmi scroller'a
+      const dist = Math.abs(left - current);
+      if (dist < bestDist) {
+        bestDist = dist;
+        bestLeft = left;
+      }
+    }
+
+    el.scrollTo({ left: bestLeft, behavior: "smooth" });
+  };
+
+  const stopDrag = () => {
+    const el = scrollerRef.current;
+    if (el) el.style.cursor = "grab";
+
+    // snap tylko jeśli faktycznie byliśmy w drag
+    if (drag.active) snapToNearestCard();
+
+    setDrag((d) => ({ ...d, active: false }));
+  };
 
   return (
     <Box
@@ -70,10 +136,11 @@ export default function HomeClient() {
               }}
             >
               Dobierzemy powiększenie, odległość roboczą i konfigurację tak,
-              żeby praca była wygodniejsza i dokładniejsza. Erogonomia pracy, jasny, wyraźny obraz oraz po prostu wygoda to najważniejsze rzeczy podczas pracy w gabinecie.
+              żeby praca była wygodniejsza i dokładniejsza. Ergonomia pracy,
+              jasny obraz i wygoda są najważniejsze w gabinecie.
             </Typography>
 
-            {/* CTA (TYLKO JEDEN BLOK – bez duplikatu) */}
+            {/* CTA */}
             <Box sx={{ mt: 3, display: "flex", gap: 1.5, flexWrap: "wrap" }}>
               <Button
                 component={NextLink}
@@ -126,7 +193,6 @@ export default function HomeClient() {
               <Typography sx={{ fontWeight: 900, fontSize: 18 }}>
                 Dobór w 3 krokach
               </Typography>
-
               <Typography
                 sx={{
                   mt: 0.8,
@@ -160,6 +226,7 @@ export default function HomeClient() {
           </Box>
         </Box>
 
+        {/* bullets */}
         <Box
           sx={{
             mt: { xs: 3, md: 3.5 },
@@ -201,76 +268,125 @@ export default function HomeClient() {
           ))}
         </Box>
 
-        {/* IMAGE + 3 cards overlay */}
-        <Box sx={{ mt: { xs: 5, md: 7 } }}>
-          <Divider
-            sx={{ mb: { xs: 3, md: 4 }, borderColor: "rgba(15,23,42,0.08)" }}
-          />
-          <Box
+        <Divider
+          sx={{
+            mt: { xs: 4, md: 4 },
+            mb: { xs: 1.25, md: 2 },
+            borderColor: "rgba(15,23,42,0.08)",
+          }}
+        />
+        {/* PRODUCTS */}
+        <Box
+          id="products"
+          sx={{
+            mt: { xs: 4, md: 4 },
+            mb: { xs: 1.25, md: 2 },
+            scrollMarginTop: 110,
+          }}
+        >
+          <Typography
             sx={{
-              borderRadius: 4,
-              p: 2,
-              backgroundColor: colors.surface,
-              border: `1px solid ${colors.border}`,
-              boxShadow: colors.shadowSm,
+              fontSize: { xs: 28, md: 40 },
+              fontWeight: 900,
+              letterSpacing: "-0.02em",
             }}
           >
-            <Box
+            {home.products.heading}
+          </Typography>
+
+          <Box sx={{ mt: 3, position: "relative" }}>
+            {/* desktop arrows */}
+            <Button
+              onClick={() => scrollByCard(-1)}
               sx={{
-                position: "relative",
-                overflow: "hidden",
-                borderRadius: 3.5,
-                backgroundColor: "#E9EEF2",
-                aspectRatio: { xs: "16/10", md: "21/9" },
+                position: "absolute",
+                left: 12,
+                top: "50%",
+                transform: "translateY(-50%)",
+                zIndex: 3,
+                minWidth: 46,
+                width: 46,
+                height: 46,
+                borderRadius: "50%",
+                backgroundColor: "rgba(255,255,255,0.92)",
+                backdropFilter: "blur(10px)",
+                border: `1px solid ${colors.border}`,
+                boxShadow: "0 8px 20px rgba(15,23,42,0.10)",
+                color: colors.text,
+                "&:hover": { backgroundColor: "rgba(255,255,255,0.98)" },
+                display: { xs: "none", md: "flex" },
               }}
             >
-              <Box
-                component="img"
-                src="/hero.jpg"
-                alt="Hero"
-                sx={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-              />
+              <ChevronLeftRoundedIcon />
+            </Button>
 
-              {/* overlay BEFORE cards */}
-              <Box
-                sx={{
-                  position: "absolute",
-                  inset: 0,
-                  background: {
-                    xs: "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0) 55%)",
-                    md: "linear-gradient(to top, rgba(0,0,0,0.32), rgba(0,0,0,0) 58%)",
-                  },
-                  pointerEvents: "none",
-                }}
-              />
+            <Button
+              onClick={() => scrollByCard(1)}
+              sx={{
+                position: "absolute",
+                right: 12,
+                top: "50%",
+                transform: "translateY(-50%)",
+                zIndex: 3,
+                minWidth: 46,
+                width: 46,
+                height: 46,
+                borderRadius: "50%",
+                backgroundColor: "rgba(255,255,255,0.92)",
+                backdropFilter: "blur(10px)",
+                border: `1px solid ${colors.border}`,
+                boxShadow: "0 8px 20px rgba(15,23,42,0.10)",
+                color: colors.text,
+                "&:hover": { backgroundColor: "rgba(255,255,255,0.98)" },
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              <ChevronRightRoundedIcon />
+            </Button>
 
-              {/* cards on top */}
-              <Box
-                sx={{
-                  position: "absolute",
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  p: { xs: 2, md: 3 },
-                  display: "grid",
-                  gap: 1.5,
-                  gridTemplateColumns: { xs: "1fr", md: "repeat(3, 1fr)" },
-                }}
-              >
-                {home.hero.points.map((p) => (
-                  <OfferCard key={p.title} title={p.title} desc={p.desc} />
-                ))}
-              </Box>
+            <Box
+              ref={scrollerRef}
+              sx={{
+                display: "flex",
+                gap: 2,
+                overflowX: "auto",
+                py: 0.5,
+                px: { xs: 1, md: 2 },
+                scrollSnapType: "x mandatory",
+                WebkitOverflowScrolling: "touch",
+                scrollbarWidth: "none",
+                "&::-webkit-scrollbar": { display: "none" },
+                cursor: { xs: "auto", md: "grab" },
+                scrollSnapStop: "always",
+
+                WebkitMaskImage: {
+                  xs: "linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%)",
+                  md: "linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%)",
+                },
+                maskImage: {
+                  xs: "linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%)",
+                  md: "linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%)",
+                },
+                WebkitMaskRepeat: "no-repeat",
+                maskRepeat: "no-repeat",
+                WebkitMaskSize: "100% 100%",
+                maskSize: "100% 100%",
+              }}
+              onMouseDown={onMouseDown}
+              onMouseMove={onMouseMove}
+              onMouseUp={stopDrag}
+              onMouseLeave={stopDrag}
+            >
+              {home.products.tiles.map((t) => (
+                <ProductCard key={t.title} {...t} />
+              ))}
             </Box>
+
+            <Typography sx={{ mt: 1.25, color: colors.textSoft, fontSize: 13 }}>
+              Przewiń w prawo, żeby zobaczyć całą ofertę.
+            </Typography>
           </Box>
         </Box>
-
         {/* WHY */}
         <Box sx={{ mt: 7 }}>
           <Typography
@@ -298,32 +414,6 @@ export default function HomeClient() {
           >
             {home.why.tiles.map((t) => (
               <GlassTile key={t} text={t} />
-            ))}
-          </Box>
-        </Box>
-
-        {/* PRODUCTS */}
-        <Box id="products" sx={{ mt: 7, scrollMarginTop: 110 }}>
-          <Typography
-            sx={{
-              fontSize: { xs: 28, md: 40 },
-              fontWeight: 900,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {home.products.heading}
-          </Typography>
-
-          <Box
-            sx={{
-              mt: 3,
-              display: "grid",
-              gap: 1.5,
-              gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" },
-            }}
-          >
-            {home.products.tiles.map((t) => (
-              <ProductTile key={t.title} {...t} />
             ))}
           </Box>
         </Box>
@@ -373,12 +463,9 @@ export default function HomeClient() {
                   >
                     {r.left}
                   </Typography>
-
-                  {/* prawa strona jako pill */}
                   <WinnerPill label={r.right} />
                 </Box>
 
-                {/* divider zamiast zebra */}
                 {idx !== home.compare.rows.length - 1 && (
                   <Divider sx={{ borderColor: "rgba(15,23,42,0.08)" }} />
                 )}
@@ -470,46 +557,6 @@ export default function HomeClient() {
   );
 }
 
-function OfferCard({ title, desc }) {
-  return (
-    <Box
-      sx={{
-        position: "relative",
-        borderRadius: 3,
-        px: 2.2,
-        py: 2,
-        backgroundColor: "rgba(255,255,255,0.92)",
-        border: "1px solid rgba(15,23,42,0.10)",
-        boxShadow: "0 10px 25px rgba(15,23,42,0.10)",
-        backdropFilter: "blur(8px)",
-        textAlign: "center",
-
-        // --- HOVER / ANIMACJA ---
-        transition:
-          "transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease",
-        "&:hover": {
-          transform: "translateY(-1px)",
-          boxShadow: "0 12px 26px rgba(15,23,42,0.11)",
-          borderColor: "rgba(15,23,42,0.14)",
-        },
-      }}
-    >
-      <Typography sx={{ fontSize: 16, fontWeight: 800 }}>{title}</Typography>
-
-      <Typography
-        sx={{
-          mt: 1,
-          fontSize: 14,
-          lineHeight: 1.35,
-          color: "rgba(15,23,42,0.65)",
-        }}
-      >
-        {desc}
-      </Typography>
-    </Box>
-  );
-}
-
 function GlassTile({ text }) {
   return (
     <Box
@@ -523,47 +570,6 @@ function GlassTile({ text }) {
     >
       <Typography sx={{ color: colors.text, fontWeight: 900 }}>
         {text}
-      </Typography>
-    </Box>
-  );
-}
-
-function ProductTile({ title, desc, href, cta }) {
-  return (
-    <Box
-      component={NextLink}
-      href={href}
-      sx={{
-        textDecoration: "none",
-        borderRadius: 3,
-        p: 2.5,
-        backgroundColor: colors.surface,
-        border: `1px solid ${colors.border}`,
-        boxShadow: colors.shadowSm,
-        display: "block",
-        "&:hover": { backgroundColor: colors.surfaceAlt },
-      }}
-    >
-      <Typography sx={{ color: colors.text, fontWeight: 900, fontSize: 18 }}>
-        {title}
-      </Typography>
-      <Typography
-        sx={{ mt: 1, color: colors.textSoft, fontSize: 14, maxWidth: 520 }}
-      >
-        {desc}
-      </Typography>
-      <Typography
-        sx={{
-          mt: 2,
-          color: colors.accent,
-          fontWeight: 900,
-          fontSize: 14,
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 1,
-        }}
-      >
-        {cta} <NorthEastRoundedIcon sx={{ fontSize: 18 }} />
       </Typography>
     </Box>
   );
@@ -621,6 +627,7 @@ function Step({ n, title, desc }) {
     </Box>
   );
 }
+
 function WinnerPill({ label }) {
   return (
     <Box
@@ -630,8 +637,6 @@ function WinnerPill({ label }) {
         gap: 0.6,
         px: 1.2,
         py: 0.55,
-        backgroundColor: "rgba(255,255,255,0.65)",
-        backdropFilter: "blur(8px)",
         fontWeight: 800,
         color: "rgba(15,23,42,0.85)",
         lineHeight: 1,
@@ -640,6 +645,87 @@ function WinnerPill({ label }) {
     >
       {label}
       <TrendingUpRoundedIcon sx={{ fontSize: 18, opacity: 0.7 }} />
+    </Box>
+  );
+}
+
+function ProductCard({ title, desc, href, cta, img }) {
+  return (
+    <Box
+      component={NextLink}
+      href={href}
+      data-card="1"
+      sx={{
+        scrollSnapAlign: "start",
+        flex: "0 0 auto",
+        width: { xs: "85%", sm: 320, md: 340 },
+        textDecoration: "none",
+        borderRadius: 3,
+        overflow: "hidden",
+        backgroundColor: colors.surface,
+        border: `1px solid ${colors.border}`,
+        boxShadow: "0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1)",
+        transition: "all 200ms ease",
+        "&:hover": {
+          transform: "translateY(-1px)",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.12)",
+          borderColor: "rgba(15,23,42,0.12)",
+        },
+      }}
+    >
+      {/* image */}
+      <Box
+        sx={{
+          position: "relative",
+          aspectRatio: "16/10",
+          backgroundColor: colors.surfaceAlt,
+        }}
+      >
+        <Box
+          component="img"
+          src={img || "/hero.jpg"}
+          alt={title}
+          sx={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.30), rgba(0,0,0,0) 50%)",
+            pointerEvents: "none",
+          }}
+        />
+      </Box>
+
+      {/* body */}
+      <Box sx={{ p: 2.5 }}>
+        <Typography
+          sx={{ color: colors.textSoft, fontSize: 14, lineHeight: 1.6 }}
+        >
+          {desc}
+        </Typography>
+
+        <Box
+          sx={{
+            mt: 2.5,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 0.5,
+            color: colors.accent,
+            fontWeight: 700,
+            fontSize: 13,
+          }}
+        >
+          {title} <NorthEastRoundedIcon sx={{ fontSize: 16 }} />
+        </Box>
+      </Box>
     </Box>
   );
 }
