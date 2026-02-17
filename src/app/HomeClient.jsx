@@ -135,9 +135,10 @@ export default function HomeClient() {
                 maxWidth: "62ch",
               }}
             >
-              Dobierzemy powiększenie, odległość roboczą i konfigurację tak,
-              żeby praca była wygodniejsza i dokładniejsza. Ergonomia pracy,
-              jasny obraz i wygoda są najważniejsze w gabinecie.
+              Dobieramy powiększenie, odległość roboczą i konfigurację
+              indywidualnie do Twojej specjalizacji, aby zapewnić maksymalną
+              precyzję pracy oraz ergonomię, która realnie odciąża kręgosłup i
+              wzrok oraz zwiększą komfort pracy przez wiele godzin.
             </Typography>
 
             {/* CTA */}
@@ -208,18 +209,24 @@ export default function HomeClient() {
               <Box sx={{ mt: 2.4, display: "grid", gap: 2 }}>
                 <Step
                   n="1"
-                  title="Rozmowa (5-10 min)"
-                  desc="Specjalizacja, nawyki pracy, oczekiwania."
+                  title="Konsultacja (5-10 min)"
+                  desc="poznajemy Twoją specjalizację, nawyki pracy oraz oczekiwania."
                 />
                 <Step
                   n="2"
-                  title="Pomiary"
-                  desc="PD, odległość robocza, preferowana pozycja."
+                  title="Precyzyjne pomiary"
+                  desc="PD, odległość robocza oraz preferowana pozycja."
                 />
                 <Step
                   n="3"
-                  title="Konfiguracja"
-                  desc="Powiększenie, oprawa, LED, ewentualna korekcja."
+                  title="Indywidualna konfiguracja"
+                  desc={
+                    <>
+                      <span>Dobór powiększenia, oprawy, oświetlenia LED</span>
+                      <br />
+                      <span>i ewentualnej korekcji.</span>
+                    </>
+                  }
                 />
               </Box>
             </Box>
@@ -398,9 +405,7 @@ export default function HomeClient() {
           >
             {home.why.heading}
           </Typography>
-          <Typography
-            sx={{ mt: 2, color: colors.textSoft, fontSize: 15, maxWidth: 820 }}
-          >
+          <Typography sx={{ mt: 2, color: colors.textSoft, fontSize: 15 }}>
             {home.why.text}
           </Typography>
 
@@ -473,9 +478,7 @@ export default function HomeClient() {
             ))}
           </Box>
 
-          <Typography
-            sx={{ mt: 2, color: colors.textSoft, fontSize: 14, maxWidth: 860 }}
-          >
+          <Typography sx={{ mt: 2, color: colors.textSoft, fontSize: 14 }}>
             {home.compare.note}
           </Typography>
 

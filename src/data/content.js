@@ -20,7 +20,7 @@ const content = {
     },
 
     why: {
-      heading: "Mniej zmęczenia. Więcej kontroli. Lepsza postawa.",
+      heading: "Mniej zmęczenia, więcej kontroli, lepsza postawa",
       text: "W stomatologii detale decydują o jakości. Lupy pomagają widzieć więcej bez pochylania głowy, dzięki czemu łatwiej utrzymać powtarzalność i komfort w długich zabiegach.",
       tiles: [
         "Dokładniejsza preparacja i kontrola pola",
@@ -37,16 +37,19 @@ const content = {
           title: "Lupy TTL",
           desc: "Maksymalna stabilność i precyzja obrazu.",
           href: "/products/ttl",
+          img: "/TTLA3_1.jpg",
         },
         {
           title: "Lupy Flip-Up",
           desc: "Elastyczność i regulacja. Idealne do pracy mieszanej lub jako pierwsze lupy.",
           href: "/products/flipUp",
+          img: "/FlipUp2.png",
         },
         {
           title: "Oświetlenie LED",
           desc: "Równomierne światło w osi widzenia. Mniej cieni w polu pracy.",
           href: "/products/led",
+          img: "/led1.jpg",
         },
         {
           title: "Akcesoria",
@@ -57,42 +60,34 @@ const content = {
     },
 
     compare: {
-      heading: "Lupy TTL czy Flip-Up? Wybierz idealne rozwiązanie.",
+      heading: "Lupy TTL czy Flip-Up? Wybierz idealne rozwiązanie",
       rows: [
         { left: "Stabilność obrazu", right: "TTL" },
         { left: "Regulacja i odchylanie optyki", right: "Flip-Up" },
         { left: "Personalizacja", right: "TTL" },
         { left: "Start i praca “mix”", right: "Flip-Up" },
       ],
-      note: "Jeśli nie wiesz, co wybrać — zrobimy szybki dobór na podstawie specjalizacji, wzrostu i pozycji pracy.",
+      note: "Jeśli nie wiesz, który typ lupy będzie najlepszy, skontakuj sie z nami! Pomożemy z doborem na podstawie Twojej specjalizacji, wzrostu i  preferowanej pozycji pracy.",
     },
 
-    steps: {
-      heading: "Dobór EYE OPTIC w 3 krokach",
-      items: [
-        "Rozmowa (5-10 min) - specjalizacja, nawyki, oczekiwania",
-        "Pomiary - PD, odległość robocza, preferowana pozycja",
-        "Konfiguracja - powiększenie, oprawa, LED, ewentualna korekcja",
-      ],
-      cta: { label: "Umów dobór", href: "/fitting" },
-    },
 
     faqPreview: {
       heading: "FAQ",
       items: [
         {
-          q: "Czy lupy mogą być w wersji z korekcją wzroku?",
-          a: "Tak — w zależności od konfiguracji dobieramy rozwiązanie pod okulary/korekcję.",
+          q: "Czy lupy mogą uwzględniać korekcję wzroku?",
+          a: "Tak. Konfigurację dobieramy indywidualnie. Lupy mogą być wykonane z korekcją dopasowaną do Twojej wady wzroku lub współpracować z używaną korekcją okularową.",
         },
         {
-          q: "Ile trwa adaptacja do pracy w lupach?",
-          a: "Zwykle kilka dni regularnej pracy. Najszybciej adaptują się osoby, które mają dobrze dobraną odległość roboczą i kąt pracy.",
+          q: "Jak długo trwa adaptacja do pracy w lupach?",
+          a: "Najczęściej wystarcza kilka dni regularnej pracy. Kluczowe znaczenie ma prawidłowo dobrana odległość robocza i kąt obserwacji, dzięki temu adaptacja przebiega szybko i naturalnie.",
         },
         {
-          q: "TTL czy Flip-Up — co będzie lepsze?",
-          a: "TTL charakteryzuje się maksymalną stabilnością i precyzją. Flip-Up elastycznością i regulacją, idealna do pracy typu “mix” i na start.",
+          q: "TTL czy Flip-Up — które rozwiązanie będzie lepsze?",
+          a: "Lupy TTL zapewniają najwyższą stabilność obrazu, mniejszą wagę i maksymalną precyzję. Flip-Up oferują większą elastyczność regulacji, dlatego dobrze sprawdzają się na początku pracy z powiększeniem lub przy pracy mieszanej.",
         },
       ],
+
       moreHref: "/faq",
       moreLabel: "Zobacz pełne FAQ",
     },

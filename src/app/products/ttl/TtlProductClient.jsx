@@ -100,7 +100,7 @@ export default function TtlProductClient() {
                 fontSize: fontSizes.mini,
                 fontWeight: 800,
                 color: colors.accent,
-                letterSpacing: "0.1em", // <-- zwiększa odstęp między literami, także przy kropkach
+                letterSpacing: "0.1em", 
               }}
             >
               Stabilność • Ergonomia • Precyzja
@@ -108,7 +108,7 @@ export default function TtlProductClient() {
           </Box>
 
           <Typography sx={{ mt: 3, color: colors.textSoft, lineHeight: 1.75 }}>
-            TTL (Through The Lens) to rozwiązanie dla osób, które chcą
+            Lupy TTL (Through The Lens) to rozwiązanie dla osób, które chcą
             maksymalnej stabilności obrazu i pracy “bez poprawiania ustawień”.
             Optyka osadzona w szkłach daje spójne pole widzenia i wysoką
             precyzję w wymagających procedurach.
