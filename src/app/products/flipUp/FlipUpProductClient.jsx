@@ -100,10 +100,10 @@ export default function TtlProductClient() {
                 fontSize: fontSizes.mini,
                 fontWeight: 800,
                 color: colors.accent,
-                letterSpacing: "0.1em", // <-- zwiększa odstęp między literami, także przy kropkach
+                letterSpacing: "0.1em", 
               }}
             >
-              Stabilność • Ergonomia • Precyzja
+              Elastyczność • Regulacja • Uniwersalność
             </Typography>
           </Box>
 
@@ -116,16 +116,16 @@ export default function TtlProductClient() {
           >
             Flip-Up to lupy dla tych, którzy chcą elastyczności. Dostarczają
             możliwość odchylenia optyki, łatwiejszą regulację i wygodną pracę
-            “mix” w gabinecie. Idealne jako pierwsze lupy lub do codziennej
-            stomatologii ogólnej.
+            “mix” w gabinecie. To dobry wybór jako pierwsze lupy lub do
+            codziennej, zróżnicowanej pracy w gabinecie.
           </Typography>
 
           <Box sx={{ mt: 4, display: "grid", gap: 1.5, pb: 4 }}>
             {[
-              "Endodoncja",
-              "Protetyka / estetyka",
-              "Chirurgia / perio",
-              "Praca na detalach i granicach",
+              "Stomatologia ogólna i praca mieszana",
+              "Chirurgia wymagająca zmiany pola widzenia",
+              "Gabinet o zróżnicowanych procedurach",
+              "Pierwsze lupy - możliwość regulacji i adaptacji",
             ].map((t) => (
               <Box
                 key={t}
@@ -176,23 +176,24 @@ export default function TtlProductClient() {
           </Typography>
 
           <Typography sx={{ mt: 2, color: colors.textSoft, lineHeight: 1.8 }}>
-            Flip-Up daje spójne pole widzenia i powtarzalny obraz — szczególnie
-            wtedy, gdy liczy się precyzja i komfort przez wiele godzin pracy.
+            Lupy Flip-Up zapewniają spójne pole widzenia i powtarzalny obraz,
+            szczególnie wtedy, gdy liczy się precyzja i komfort przez wiele
+            godzin pracy.
           </Typography>
 
           <Box sx={{ mt: 3.5, display: "grid", gap: 1.6 }}>
             {[
               {
                 title: "Szybka regulacja ",
-                desc: "łatwiej dopasować ustawienie",
+                desc: "Łatwiej dopasować wygodną pozycję i przełączać się między powiększeniem a widzeniem naturalnym.",
               },
               {
                 title: "Odchylenie optyki ",
-                desc: "przełączasz się między powiększeniem a widzeniem naturalnym",
+                desc: "Przełączasz się między powiększeniem a widzeniem naturalnym.",
               },
               {
                 title: "Uniwersalność",
-                desc: "dobra opcja do wielu procedur",
+                desc: "Idealne do codziennej stomatologii ogólnej oraz procedur specjalistycznych.",
               },
             ].map((b) => (
               <Box
@@ -356,7 +357,7 @@ export default function TtlProductClient() {
               color: colors.textSoft,
             }}
           >
-            Dobór zależy od typu zabiegów i pozycji pracy — dopasujemy je
+            Dobór zależy od typu zabiegów i pozycji pracy - dopasujemy je
             podczas konsultacji.
           </Typography>
 

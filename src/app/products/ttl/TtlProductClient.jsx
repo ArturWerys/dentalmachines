@@ -29,7 +29,7 @@ export default function TtlProductClient() {
           pb: 1,
           gap: { xs: 3, md: 4 },
           gridTemplateColumns: { xs: "1fr", md: "1.05fr 0.95fr" },
-          alignItems: "center", // ✅ było "start" — teraz wyśrodkowuje obraz względem karty
+          alignItems: "center",
         }}
       >
         {/* LEFT: Gallery */}
@@ -100,25 +100,25 @@ export default function TtlProductClient() {
                 fontSize: fontSizes.mini,
                 fontWeight: 800,
                 color: colors.accent,
-                letterSpacing: "0.1em", 
+                letterSpacing: "0.1em",
               }}
             >
-              Stabilność • Ergonomia • Precyzja
+              Stabilność • Personalizacja • Precyzja
             </Typography>
           </Box>
 
           <Typography sx={{ mt: 3, color: colors.textSoft, lineHeight: 1.75 }}>
-            Lupy TTL (Through The Lens) to rozwiązanie dla osób, które chcą
-            maksymalnej stabilności obrazu i pracy “bez poprawiania ustawień”.
-            Optyka osadzona w szkłach daje spójne pole widzenia i wysoką
-            precyzję w wymagających procedurach.
+            Lupy TTL (Through The Lens) to rozwiązanie dla osób, które oczekują
+            maksymalnej stabilności obrazu i pracy bez konieczności korekty
+            ustawień. Optyka osadzona w szkłach daje spójne pole widzenia i
+            wysoką precyzję w wymagających procedurach.
           </Typography>
 
           <Box sx={{ mt: 4, display: "grid", gap: 1.5, pb: 4 }}>
             {[
               "Endodoncja",
-              "Protetyka / estetyka",
-              "Chirurgia / perio",
+              "Protetyka i estetyka",
+              "Chirurgia i zabiegi wymagające stabilnej osi widzenia",
               "Praca na detalach i granicach",
             ].map((t) => (
               <Box
@@ -170,23 +170,24 @@ export default function TtlProductClient() {
           </Typography>
 
           <Typography sx={{ mt: 2, color: colors.textSoft, lineHeight: 1.8 }}>
-            TTL daje spójne pole widzenia i powtarzalny obraz — szczególnie
-            wtedy, gdy liczy się precyzja i komfort przez wiele godzin pracy.
+            Lupy TTL zapewniają spójne pole widzenia i powtarzalny obraz,
+            szczególnie wtedy, gdy liczy się precyzja i komfort przez wiele
+            godzin pracy.
           </Typography>
 
           <Box sx={{ mt: 3.5, display: "grid", gap: 1.6 }}>
             {[
               {
                 title: "Stabilny obraz",
-                desc: "mniej mikro-ruchów i „pływania” podczas pracy",
+                desc: "Mniej mikro-ruchów i „pływania” podczas pracy.",
               },
               {
-                title: "Praca w ergonomii",
-                desc: "dobrany kąt i odległość robocza dla naturalnej pozycji",
+                title: "Ergonomiczna praca",
+                desc: "Dobrany kąt i odległość robocza zapewniają naturalną pozycję głowy i pleców.",
               },
               {
                 title: "Przewidywalność",
-                desc: "raz ustawione — działa, bez ciągłego poprawiania",
+                desc: "Raz ustawione - działa, bez potrzeby ciągłego poprawiania.",
               },
             ].map((b) => (
               <Box
@@ -350,7 +351,7 @@ export default function TtlProductClient() {
               color: colors.textSoft,
             }}
           >
-            Dobór zależy od typu zabiegów i pozycji pracy — dopasujemy je
+            Dobór zależy od typu zabiegów i pozycji pracy - dopasujemy je
             podczas konsultacji.
           </Typography>
 

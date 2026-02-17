@@ -20,13 +20,13 @@ const content = {
     },
 
     why: {
-      heading: "Mniej zmęczenia, więcej kontroli, lepsza postawa",
-      text: "W stomatologii detale decydują o jakości. Lupy pomagają widzieć więcej bez pochylania głowy, dzięki czemu łatwiej utrzymać powtarzalność i komfort w długich zabiegach.",
+      heading: "Większa precyzja, mniejsze obciążenie, zdrowsza postawa",
+      text: "W stomatologii to detale decydują o jakości leczenia. Dobrze dopasowane lupy pozwalają widzieć więcej bez nadmiernego pochylania głowy, co przekłada się na większą powtarzalność ruchów, lepszą kontrolę pola zabiegowego i wyraźnie wyższy komfort podczas długich procedur.",
       tiles: [
-        "Dokładniejsza preparacja i kontrola pola",
-        "Lepsza widoczność granic i detali",
-        "Mniej napięć karku i pleców",
-        "Stabilniejsza praca w powiększeniu",
+        "Maksymalna kontrola pola zabiegowego",
+        "Wyraźne granice i lepsza ocena detali",
+        "Odciążenie odcinka szyjnego i lędźwiowego",
+        "Spokojna, stabilna praca w powiększeniu",
       ],
     },
 
@@ -41,33 +41,42 @@ const content = {
         },
         {
           title: "Lupy Flip-Up",
-          desc: "Elastyczność i regulacja. Idealne do pracy mieszanej lub jako pierwsze lupy.",
+          desc: "Elastyczność i regulacja. Idealne jako pierwsze lupy i do pracy mieszanej.",
           href: "/products/flipUp",
           img: "/FlipUp2.png",
         },
         {
           title: "Oświetlenie LED",
-          desc: "Równomierne światło w osi widzenia. Mniej cieni w polu pracy.",
+          desc: "Równomierne światło w osi widzenia - mniej cieni w polu pracy.",
           href: "/products/led",
           img: "/led1.jpg",
         },
         {
           title: "Akcesoria",
-          desc: "Oprawy, paski stabilizujące, etui, osłony i elementy dopasowania.",
+          desc: "Oprawy, paski stabilizujące, etui, osłony i elementy wyposażenia.",
+
           href: "/products/accessories",
         },
       ],
     },
 
     compare: {
-      heading: "Lupy TTL czy Flip-Up? Wybierz idealne rozwiązanie dla siebie",
+      heading:
+        "Lupy TTL czy Flip-Up? Dobierz rozwiązanie dopasowane do Twojego stylu pracy",
       rows: [
-        { left: "Stabilność obrazu", right: "TTL" },
-        { left: "Regulacja i odchylanie optyki", right: "Flip-Up" },
-        { left: "Personalizacja", right: "TTL" },
-        { left: "Start i praca “mix”", right: "Flip-Up" },
+        {
+          left: "Maksymalna stabilność i stała geometria obrazu",
+          right: "TTL",
+        },
+        { left: "Możliwość regulacji i odchylania optyki", right: "Flip-Up" },
+        { left: "Pełna personalizacja parametrów", right: "TTL" },
+        {
+          left: "Elastyczny start i praca w trybie mieszanym",
+          right: "Flip-Up",
+        },
       ],
-      note: "Jeśli nie wiesz, który typ lupy będzie najlepszy, skontakuj sie z nami! Pomożemy z doborem na podstawie Twojej specjalizacji, wzrostu i  preferowanej pozycji pracy.",
+
+      note: "Nie wiesz, który system wybrać? Podczas krótkiej konsultacji pomożemy dobrać lupy dopasowane do Twojej specjalizacji i ergonomii pracy.",
     },
 
     faqPreview: {
@@ -82,7 +91,7 @@ const content = {
           a: "Najczęściej wystarcza kilka dni regularnej pracy. Kluczowe znaczenie ma prawidłowo dobrana odległość robocza i kąt obserwacji, dzięki temu adaptacja przebiega szybko i naturalnie.",
         },
         {
-          q: "TTL czy Flip-Up — które rozwiązanie będzie lepsze?",
+          q: "TTL czy Flip-Up - które rozwiązanie będzie lepsze?",
           a: "Lupy TTL zapewniają najwyższą stabilność obrazu, mniejszą wagę i maksymalną precyzję. Flip-Up oferują większą elastyczność regulacji, dlatego dobrze sprawdzają się na początku pracy z powiększeniem lub przy pracy mieszanej.",
         },
       ],

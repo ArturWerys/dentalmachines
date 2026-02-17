@@ -86,6 +86,13 @@ export default function HomeClient() {
     setDrag((d) => ({ ...d, active: false }));
   };
 
+  const bullets = [
+    { a: "Indywidualny dobór", b: "pod specjalizację" },
+    { a: "Systemy", b: "TTL oraz Flip-Up" },
+    { a: "Możliwość", b: "korekcji wzroku" },
+    { a: "Profesjonalne oświetlenie LED", b: "i akcesoria" },
+  ];
+
   return (
     <Box
       sx={{
@@ -135,10 +142,11 @@ export default function HomeClient() {
                 maxWidth: "62ch",
               }}
             >
-              Dobieramy powiększenie, odległość roboczą i konfigurację
-              indywidualnie do Twojej specjalizacji, aby zapewnić maksymalną
-              precyzję pracy oraz ergonomię, która realnie odciąża kręgosłup i
-              wzrok oraz zwiększą komfort pracy przez wiele godzin.
+              Każdą konfigurację dopasowujemy do Twojej specjalizacji, stylu
+              pracy <br />i oczekiwań - od powiększenia po indywidualną
+              odległość roboczą. Efektem jest większa dokładność zabiegów,
+              mniejsze zmęczenie wzroku i realne odciążenie kręgosłupa przez
+              cały dzień pracy.
             </Typography>
 
             {/* CTA */}
@@ -156,7 +164,7 @@ export default function HomeClient() {
                   textTransform: "none",
                 }}
               >
-                Umów dobór
+                Umów indywidualny dobór
               </Button>
 
               <Button
@@ -202,31 +210,26 @@ export default function HomeClient() {
                   lineHeight: 1.6,
                 }}
               >
-                Dopasujemy konfigurację pod Twoją specjalizację <br /> i
-                ergonomię.
+                Dopasowujemy lupy precyzyjnie do Twojej specjalizacji <br />i
+                naturalnej pozycji pracy - tak, aby wspierały Cię każdego dnia.
               </Typography>
 
               <Box sx={{ mt: 2.4, display: "grid", gap: 2 }}>
                 <Step
                   n="1"
                   title="Konsultacja (5-10 min)"
-                  desc="Poznajemy Twoją specjalizację, nawyki pracy oraz oczekiwania."
+                  desc="Rozmawiamy o Twojej specjalizacji, codziennych procedurach oraz oczekiwaniach wobec powiększenia i ergonomii."
                 />
                 <Step
                   n="2"
                   title="Precyzyjne pomiary"
-                  desc="PD, odległość robocza oraz preferowana pozycja."
+                  desc="Wyznaczamy: PD, odległość roboczą oraz preferowaną pozycję pracy."
                 />
                 <Step
                   n="3"
                   title="Indywidualna konfiguracja"
-                  desc={
-                    <>
-                      <span>Dobór powiększenia, oprawy, oświetlenia LED</span>
-                      <br />
-                      <span>i ewentualnej korekcji.</span>
-                    </>
-                  }
+                  desc="Dobieramy optymalne powiększenie, oprawę, oświetlenie LED oraz indywidualną korekcję wzroku.
+"
                 />
               </Box>
             </Box>
@@ -234,29 +237,26 @@ export default function HomeClient() {
         </Box>
 
         {/* bullets */}
+        {/* bullets */}
         <Box
           sx={{
             mt: { xs: 3, md: 3.5 },
             display: "grid",
-            gap: 4.5,
-            gridTemplateColumns: { xs: "1fr", md: "repeat(4, 1fr)" },
-            color: "rgba(15,23,42,0.70)",
+            gap: { xs: 2.2, md: 3 },
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(4, 1fr)",
+            },
           }}
         >
-          {[
-            "Dobór pod specjalizację",
-            "Korekcja wzroku",
-            "Lupy TTL oraz Flip-Up",
-            "Oświetlenie LED i akcesoria",
-          ].map((t) => (
+          {bullets.map((t) => (
             <Box
-              key={t}
+              key={t.a}
               sx={{
                 display: "flex",
-                alignItems: "center",
                 gap: 1.2,
-                fontWeight: 700,
-                whiteSpace: "normal",
+                alignItems: "flex-start",
               }}
             >
               <Box
@@ -265,12 +265,35 @@ export default function HomeClient() {
                   height: 8,
                   borderRadius: 999,
                   backgroundColor: colors.accent,
+                  mt: "8px",
                   flex: "0 0 auto",
                 }}
               />
-              <Typography component="span" sx={{ fontWeight: 700 }}>
-                {t}
-              </Typography>
+
+              <Box>
+                <Typography
+                  sx={{
+                    fontWeight: 800,
+                    lineHeight: 1.2,
+                    fontSize: 15,
+                    color: colors.text,
+                  }}
+                >
+                  {t.a}
+                </Typography>
+
+                <Typography
+                  sx={{
+                    mt: 0.4,
+                    color: colors.textSoft,
+                    fontWeight: 600,
+                    lineHeight: 1.25,
+                    fontSize: 14,
+                  }}
+                >
+                  {t.b}
+                </Typography>
+              </Box>
             </Box>
           ))}
         </Box>
@@ -390,7 +413,7 @@ export default function HomeClient() {
             </Box>
 
             <Typography sx={{ mt: 1.25, color: colors.textSoft, fontSize: 13 }}>
-              Przewiń w prawo, żeby zobaczyć całą ofertę.
+              Przesuń w prawo, aby poznać pełną ofertę.
             </Typography>
           </Box>
         </Box>

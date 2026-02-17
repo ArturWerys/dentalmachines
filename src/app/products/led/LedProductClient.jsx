@@ -114,10 +114,10 @@ export default function TtlProductClient() {
               lineHeight: 1.75,
             }}
           >
-            Dobre światło eliminuje cienie i poprawia kontrast w polu
-            zabiegowym. Oświetlenie LED do lup pracuje w osi widzenia, dzięki
-            czemu obraz jest jednolity i stabilny — bez konieczności ciągłego
-            korygowania lampy unitu.
+            Dobre oświetlenie eliminuje cienie i zwiększa kontrast w polu
+            zabiegowym. LED do lup działa w osi widzenia, gwarantując
+            równomierny i stabilny obraz, bez potrzeby ciągłego przesuwania
+            lampy.
           </Typography>
 
           <Box sx={{ mt: 4, display: "grid", gap: 1.5, pb: 4 }}>
@@ -185,7 +185,7 @@ export default function TtlProductClient() {
             {[
               {
                 title: "Równomierne oświetlenie pola zabiegowego",
-                desc: "Jednolita wiązka światła bez ostrych cieni — lepsza kontrola nad detalami.",
+                desc: "Jednolita wiązka światła bez ostrych cieni - lepsza kontrola nad detalami.",
               },
               {
                 title: "Większa precyzja i kontrast obrazu",
@@ -325,7 +325,7 @@ export default function TtlProductClient() {
           </Typography>
 
           <Typography sx={{ mt: 2, color: colors.textSoft, lineHeight: 1.8 }}>
-            Konfigurujemy oświetlenie LED pod Twój styl pracy — dobierając
+            Konfigurujemy oświetlenie LED pod Twój styl pracy - dobierając
             sposób zasilania, montaż i parametry światła tak, aby zapewnić
             stabilny obraz i komfort przez cały dzień pracy.
           </Typography>
