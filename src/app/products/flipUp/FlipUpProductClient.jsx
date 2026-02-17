@@ -21,7 +21,6 @@ export default function FlipUpProductClient() {
 
   return (
     <>
-      {/* TOP: TTL + image (image wyśrodkowane względem reszty) */}
       <Box
         sx={{
           mt: { xs: 4, md: 6 },
