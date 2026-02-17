@@ -210,7 +210,7 @@ export default function HomeClient() {
                 <Step
                   n="1"
                   title="Konsultacja (5-10 min)"
-                  desc="poznajemy Twoją specjalizację, nawyki pracy oraz oczekiwania."
+                  desc="Poznajemy Twoją specjalizację, nawyki pracy oraz oczekiwania."
                 />
                 <Step
                   n="2"
