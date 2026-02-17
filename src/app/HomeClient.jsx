@@ -237,17 +237,18 @@ export default function HomeClient() {
         </Box>
 
         {/* bullets */}
-        {/* bullets */}
+
         <Box
           sx={{
             mt: { xs: 3, md: 3.5 },
             display: "grid",
-            gap: { xs: 2.2, md: 3 },
+            gap: 3,
             gridTemplateColumns: {
               xs: "1fr",
               sm: "repeat(2, 1fr)",
               md: "repeat(4, 1fr)",
             },
+            alignItems: "center",
           }}
         >
           {bullets.map((t) => (
@@ -255,8 +256,8 @@ export default function HomeClient() {
               key={t.a}
               sx={{
                 display: "flex",
+                alignItems: "center",
                 gap: 1.2,
-                alignItems: "flex-start",
               }}
             >
               <Box
@@ -264,36 +265,27 @@ export default function HomeClient() {
                   width: 8,
                   height: 8,
                   borderRadius: 999,
-                  backgroundColor: colors.accent,
-                  mt: "8px",
+                  backgroundColor: "#1BA39C",
                   flex: "0 0 auto",
                 }}
               />
 
-              <Box>
-                <Typography
-                  sx={{
-                    fontWeight: 800,
-                    lineHeight: 1.2,
-                    fontSize: 15,
-                    color: colors.text,
-                  }}
-                >
-                  {t.a}
-                </Typography>
-
-                <Typography
-                  sx={{
-                    mt: 0.4,
-                    color: colors.textSoft,
-                    fontWeight: 600,
-                    lineHeight: 1.25,
-                    fontSize: 14,
-                  }}
-                >
-                  {t.b}
-                </Typography>
-              </Box>
+              <Typography
+                sx={{
+                  fontWeight: 700,
+                  fontSize: 16,
+                  color: "rgba(15, 23, 42, 0.78)",
+                  lineHeight: 1.25,
+                }}
+              >
+                {t.a}
+                {t.b && (
+                  <>
+                    <br />
+                    {t.b}
+                  </>
+                )}
+              </Typography>
             </Box>
           ))}
         </Box>
