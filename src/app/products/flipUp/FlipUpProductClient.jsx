@@ -7,8 +7,8 @@ import { Box, Button, Typography } from "@mui/material";
 
 import colors from "@/data/colors";
 
-export default function TtlProductClient() {
-  const images = useMemo(() => ["/FlipUp1.jpg", "/FlipUp2.png"], []);
+export default function FlipUpProductClient() {
+  const images = useMemo(() => ["/flip-up-1.jpg", "/flip-up-2.png"], []);
 
   const fontSizes = {
     title: { xs: 32, sm: 40, md: 46 },
@@ -29,7 +29,7 @@ export default function TtlProductClient() {
           pb: 1,
           gap: { xs: 3, md: 4 },
           gridTemplateColumns: { xs: "1fr", md: "1.05fr 0.95fr" },
-          alignItems: "center", // ✅ było "start" — teraz wyśrodkowuje obraz względem karty
+          alignItems: "center",
         }}
       >
         {/* LEFT: Gallery */}
@@ -100,7 +100,7 @@ export default function TtlProductClient() {
                 fontSize: fontSizes.mini,
                 fontWeight: 800,
                 color: colors.accent,
-                letterSpacing: "0.1em", 
+                letterSpacing: "0.1em",
               }}
             >
               Elastyczność • Regulacja • Uniwersalność

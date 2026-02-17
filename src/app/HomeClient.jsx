@@ -80,7 +80,7 @@ export default function HomeClient() {
     const el = scrollerRef.current;
     if (el) el.style.cursor = "grab";
 
-    // snap tylko jeśli faktycznie byliśmy w drag
+
     if (drag.active) snapToNearestCard();
 
     setDrag((d) => ({ ...d, active: false }));

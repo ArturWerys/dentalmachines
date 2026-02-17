@@ -8,7 +8,7 @@ import { Box, Button, Typography } from "@mui/material";
 import colors from "@/data/colors";
 
 export default function TtlProductClient() {
-  const images = useMemo(() => ["/TTLA3_1.jpg", "/TTLA3_2.jpg"], []);
+  const images = useMemo(() => ["/ttl-1.jpg", "/ttl-2.jpg"], []);
 
   const fontSizes = {
     title: { xs: 32, sm: 40, md: 46 },

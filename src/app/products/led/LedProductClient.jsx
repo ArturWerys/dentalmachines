@@ -7,8 +7,8 @@ import { Box, Button, Typography } from "@mui/material";
 
 import colors from "@/data/colors";
 
-export default function TtlProductClient() {
-  const images = useMemo(() => ["/led1.jpg", "/led2.jpg"], []);
+export default function LedProductClient() {
+  const images = useMemo(() => ["/led-1.jpg", "/led-2.jpg"], []);
 
   const fontSizes = {
     title: { xs: 32, sm: 40, md: 46 },
@@ -21,7 +21,6 @@ export default function TtlProductClient() {
 
   return (
     <>
-      {/* TOP: TTL + image (image wyśrodkowane względem reszty) */}
       <Box
         sx={{
           mt: { xs: 4, md: 6 },

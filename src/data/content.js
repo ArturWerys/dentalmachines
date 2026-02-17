@@ -37,19 +37,19 @@ const content = {
           title: "Lupy TTL",
           desc: "Maksymalna stabilność i precyzja obrazu.",
           href: "/products/ttl",
-          img: "/TTLA3_1.jpg",
+          img: "/ttl-1.jpg",
         },
         {
           title: "Lupy Flip-Up",
           desc: "Elastyczność i regulacja. Idealne jako pierwsze lupy i do pracy mieszanej.",
           href: "/products/flipUp",
-          img: "/FlipUp2.png",
+          img: "/flip-up-2.png",
         },
         {
           title: "Oświetlenie LED",
           desc: "Równomierne światło w osi widzenia - mniej cieni w polu pracy.",
           href: "/products/led",
-          img: "/led1.jpg",
+          img: "/led-1.jpg",
         },
         {
           title: "Akcesoria",
