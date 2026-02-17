@@ -60,7 +60,7 @@ const content = {
     },
 
     compare: {
-      heading: "Lupy TTL czy Flip-Up? Wybierz idealne rozwiązanie",
+      heading: "Lupy TTL czy Flip-Up? Wybierz idealne rozwiązanie dla siebie",
       rows: [
         { left: "Stabilność obrazu", right: "TTL" },
         { left: "Regulacja i odchylanie optyki", right: "Flip-Up" },
@@ -69,7 +69,6 @@ const content = {
       ],
       note: "Jeśli nie wiesz, który typ lupy będzie najlepszy, skontakuj sie z nami! Pomożemy z doborem na podstawie Twojej specjalizacji, wzrostu i  preferowanej pozycji pracy.",
     },
-
 
     faqPreview: {
       heading: "FAQ",
